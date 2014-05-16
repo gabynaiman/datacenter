@@ -1,0 +1,779 @@
+---
+"uname -i": x86_64
+
+"uname -r": 3.5.0-49-generic
+
+"uname -o": GNU/Linux
+
+"lsb_release -i": "Distributor ID: Ubuntu"
+
+"lsb_release -r": "Release:  12.04"
+
+hostname: |
+  matias
+
+nproc: |
+  2
+
+"df -l": |
+  Filesystem     1K-blocks    Used Available Use% Mounted on
+  /dev/sda1      303546744 4956120 283171336   2% /
+  udev             2010472       4   2010468   1% /dev
+  tmpfs             403964     816    403148   1% /run
+  none                5120       0      5120   0% /run/lock
+  none             2019816     848   2018968   1% /run/shm
+
+ifconfig: |
+  eth4      Link encap:Ethernet  HWaddr e0:cb:4e:c2:99:9d  
+            inet addr:192.168.50.127  Bcast:192.168.50.255  Mask:255.255.255.0
+            inet6 addr: fe80::e2cb:4eff:fec2:999d/64 Scope:Link
+            UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+            RX packets:349964 errors:0 dropped:0 overruns:0 frame:0
+            TX packets:118783 errors:0 dropped:0 overruns:0 carrier:0
+            collisions:0 txqueuelen:1000 
+            RX bytes:110494415 (110.4 MB)  TX bytes:21453491 (21.4 MB)
+
+  lo        Link encap:Local Loopback  
+            inet addr:127.0.0.1  Mask:255.0.0.0
+            inet6 addr: ::1/128 Scope:Host
+            UP LOOPBACK RUNNING  MTU:16436  Metric:1
+            RX packets:24200 errors:0 dropped:0 overruns:0 frame:0
+            TX packets:24200 errors:0 dropped:0 overruns:0 carrier:0
+            collisions:0 txqueuelen:0 
+            RX bytes:2760696 (2.7 MB)  TX bytes:2760696 (2.7 MB)
+
+"cat /proc/meminfo": |
+  MemTotal:        4039632 kB
+  MemFree:         1293268 kB
+  Buffers:          169960 kB
+  Cached:          1292480 kB
+  SwapCached:            0 kB
+  Active:          1898944 kB
+  Inactive:         650700 kB
+  Active(anon):    1288260 kB
+  Inactive(anon):   141764 kB
+  Active(file):     610684 kB
+  Inactive(file):   508936 kB
+  Unevictable:           0 kB
+  Mlocked:               0 kB
+  SwapTotal:       4183036 kB
+  SwapFree:        4183036 kB
+  Dirty:               356 kB
+  Writeback:             0 kB
+  AnonPages:       1087328 kB
+  Mapped:           140848 kB
+  Shmem:            342824 kB
+  Slab:             113380 kB
+  SReclaimable:      90760 kB
+  SUnreclaim:        22620 kB
+  KernelStack:        3088 kB
+  PageTables:        27164 kB
+  NFS_Unstable:          0 kB
+  Bounce:                0 kB
+  WritebackTmp:          0 kB
+  CommitLimit:     6202852 kB
+  Committed_AS:    3903568 kB
+  VmallocTotal:   34359738367 kB
+  VmallocUsed:      352252 kB
+  VmallocChunk:   34359379363 kB
+  HardwareCorrupted:     0 kB
+  AnonHugePages:         0 kB
+  HugePages_Total:       0
+  HugePages_Free:        0
+  HugePages_Rsvd:        0
+  HugePages_Surp:        0
+  Hugepagesize:       2048 kB
+  DirectMap4k:       49728 kB
+  DirectMap2M:     4134912 kB
+
+"cat /proc/22803/status": |
+  Name: gnome-system-mo
+  State:  S (sleeping)
+  Tgid: 22803
+  Pid:  22803
+  PPid: 1
+  TracerPid:  0
+  Uid:  1000  1000  1000  1000
+  Gid:  1000  1000  1000  1000
+  FDSize: 64
+  Groups: 4 24 27 30 46 109 124 1000 
+  VmPeak:   511316 kB
+  VmSize:   511312 kB
+  VmLck:         0 kB
+  VmPin:         0 kB
+  VmHWM:     31864 kB
+  VmRSS:     31864 kB
+  VmData:   231960 kB
+  VmStk:       136 kB
+  VmExe:       264 kB
+  VmLib:     27756 kB
+  VmPTE:       600 kB
+  VmSwap:        0 kB
+  Threads:  3
+  SigQ: 0/31413
+  SigPnd: 0000000000000000
+  ShdPnd: 0000000000000000
+  SigBlk: 0000000000000000
+  SigIgn: 0000000000001000
+  SigCgt: 0000000180000000
+  CapInh: 0000000000000000
+  CapPrm: 0000000000000000
+  CapEff: 0000000000000000
+  CapBnd: ffffffffffffffff
+  Cpus_allowed: f
+  Cpus_allowed_list:  0-3
+  Mems_allowed: 00000000,00000001
+  Mems_allowed_list:  0
+  voluntary_ctxt_switches:  8372649
+  nonvoluntary_ctxt_switches: 441694
+
+"cat /proc/22803/cmdline" : gnome-system-monitor
+
+"ps aux --sort -rss": |
+  USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+  matias   22322  5.2 21.5 1531844 872460 ?      Sl   09:35  20:53 /usr/lib/firefox/firefox
+  matias    1683  0.5  2.4 1371260 99364 ?       Sl   May15  10:17 compiz
+  matias   22376  0.9  2.0 2107500 84000 ?       Sl   09:36   3:51 /opt/sublime_text/sublime_text
+  matias   27949  0.4  1.1 452060 47676 ?        Sl   11:48   1:09 /usr/lib/firefox/plugin-container /usr/lib/flashplugin-installer/libflashplay
+  matias    1755  0.0  1.0 549020 44088 ?        Sl   May15   0:31 /usr/lib/unity/unity-panel-service
+  matias    1704  0.0  0.8 919756 35580 ?        Sl   May15   0:06 nautilus -n
+  matias    1473  0.0  0.8 106696 34208 pts/1    Sl+  15:27   0:00 /home/matias/.rvm/rubies/ruby-2.0.0-p451/bin/rake                           
+  matias   22803 11.7  0.8 512092 32632 ?        Rl   09:43  45:48 gnome-system-monitor
+  matias   22392  0.2  0.7 350564 31900 ?        Sl   09:36   0:50 /opt/sublime_text/plugin_host 22376
+  matias    1971  0.0  0.6 554976 25388 ?        Sl   May15   0:02 /usr/bin/python /usr/lib/unity-scope-video-remote/unity-scope-video-remote
+  matias    3494  0.0  0.6 497476 25268 ?        Sl   15:56   0:00 gedit
+  root       971  1.0  0.6 105380 24492 tty7     Ss+  May15  20:05 /usr/bin/X :0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch -b
+  matias   22577  0.1  0.5 555828 24188 ?        Rl   09:42   0:32 gnome-terminal
+  matias    1666  0.0  0.4 679176 18796 ?        Sl   May15   0:16 /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+  matias    1863  0.0  0.4 515028 16664 ?        Sl   May15   0:00 /usr/bin/python /usr/lib/unity-lens-video/unity-lens-video
+  matias    1707  0.0  0.4 582096 16420 ?        Sl   May15   0:00 nm-applet
+  matias    1709  0.0  0.3 426452 14396 ?        Sl   May15   0:00 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+  matias    1857  0.0  0.3 827724 14004 ?        Sl   May15   0:01 /usr/lib/unity-lens-applications/unity-applications-daemon
+  matias    1997  0.0  0.3 400244 13800 ?        Sl   May15   0:00 /usr/lib/gnome-online-accounts/goa-daemon
+  matias    1606  0.0  0.3 450776 13316 ?        Sl   May15   0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+  matias    2035  0.0  0.3 407452 13288 ?        Sl   May15   0:02 update-notifier
+  root      2350  0.0  0.3  95416 12344 ?        S    May15   0:00 /usr/bin/python /usr/lib/system-service/system-service-d
+  matias    1702  0.0  0.3 507032 12316 ?        Sl   May15   0:00 bluetooth-applet
+  matias    1748  0.0  0.2 320552 11940 ?        Sl   May15   0:12 /usr/bin/gtk-window-decorator
+  colord    1415  0.0  0.2 491712 11672 ?        Sl   May15   0:00 /usr/lib/x86_64-linux-gnu/colord/colord
+  matias    1743  0.0  0.2 419480 11524 ?        Sl   May15   0:21 /usr/lib/bamf/bamfdaemon
+  matias   23542  0.0  0.2  34216 11408 pts/0    Ss   10:24   0:01 -bash
+  matias   22903  0.0  0.2  34164 11360 pts/1    Ss   09:46   0:00 -bash
+  matias    1985  0.0  0.2 429476 11020 ?        Sl   May15   0:00 telepathy-indicator
+  matias    1757  0.0  0.2 703768 10584 ?        Sl   May15   0:08 /usr/lib/indicator-appmenu/hud-service
+  matias    2014  0.0  0.2 314804 10304 ?        Sl   May15   0:05 gnome-screensaver
+  matias    1777  0.0  0.2 563084 10160 ?        Sl   May15   0:00 /usr/lib/indicator-printers/indicator-printers-service
+  matias    1900  0.0  0.2 246092 10032 ?        Sl   May15   0:00 /usr/lib/zeitgeist/zeitgeist-fts
+  matias    1617  0.0  0.2 394836  9736 ?        Ssl  May15   0:01 gnome-session --session=ubuntu
+  matias    1921  0.0  0.2 331704  9252 ?        Sl   May15   0:00 /usr/lib/gnome-disk-utility/gdu-notification-daemon
+  matias    1700  0.0  0.2 455136  8804 ?        Sl   May15   0:00 /usr/lib/gnome-settings-daemon/gnome-fallback-mount-helper
+  matias    1861  0.0  0.2 672880  8608 ?        Sl   May15   0:00 /usr/lib/unity-lens-music/unity-music-daemon
+  matias    1780  0.0  0.1 565572  7516 ?        Sl   May15   0:00 /usr/lib/indicator-datetime/indicator-datetime-service
+  matias    1859  0.0  0.1 942284  7164 ?        Sl   May15   0:00 /usr/lib/unity-lens-files/unity-files-daemon
+  matias    1779  0.0  0.1 529800  6980 ?        Sl   May15   0:00 /usr/lib/indicator-sound/indicator-sound-service
+  matias    1781  0.0  0.1 646604  6520 ?        Sl   May15   0:00 /usr/lib/indicator-messages/indicator-messages-service
+  matias    1830  0.0  0.1 332928  6476 ?        Sl   May15   0:00 /usr/lib/ubuntu-geoip/ubuntu-geoip-provider
+  matias    1695  0.0  0.1 363220  6388 ?        S<l  May15   0:00 /usr/bin/pulseaudio --start --log-target=syslog
+  matias    1992  0.0  0.1 321308  6376 ?        Sl   May15   0:00 /usr/lib/telepathy/mission-control-5
+  matias    1778  0.0  0.1 602340  6328 ?        Sl   May15   0:00 /usr/lib/indicator-session/indicator-session-service
+  matias    1902  0.0  0.1 417764  5892 ?        Sl   May15   0:00 zeitgeist-datahub
+  matias    1656  0.0  0.1  30284  5736 ?        Ss   May15   0:20 //bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+  root       781  0.0  0.1 237856  5416 ?        Ssl  May15   0:00 NetworkManager
+  whoopsie   942  0.0  0.1 202280  5112 ?        Ssl  May15   0:02 whoopsie
+  matias    1773  0.0  0.1 560876  5064 ?        Sl   May15   0:00 /usr/lib/indicator-application/indicator-application-service
+  matias    1888  0.0  0.1 348244  4972 ?        Sl   May15   0:00 /usr/bin/zeitgeist-daemon
+  root       791  0.0  0.1 202668  4652 ?        Sl   May15   0:00 /usr/lib/policykit-1/polkitd --no-debug
+  root      1252  0.0  0.1 219908  4368 ?        Sl   May15   0:00 /usr/lib/upower/upowerd
+  matias    1946  0.0  0.1 586416  4360 ?        Sl   May15   0:00 /usr/lib/unity-lens-music/unity-musicstore-daemon
+  root       818  0.0  0.1 104180  4180 ?        Ss   May15   0:00 /usr/sbin/cupsd -F
+  matias    2074  0.0  0.0 289456  3968 ?        Sl   May15   0:01 /usr/lib/deja-dup/deja-dup/deja-dup-monitor
+  root      1139  0.0  0.0 1043060 3940 ?        Sl   May15   0:00 /usr/sbin/console-kit-daemon --no-daemon
+  root      1722  0.0  0.0 193368  3936 ?        Sl   May15   0:01 /usr/lib/udisks/udisks-daemon
+  root      1114  0.0  0.0 121532  3784 ?        Sl   May15   0:00 /usr/lib/accountsservice/accounts-daemon
+  matias    1720  0.0  0.0  70300  3760 ?        S    May15   0:00 /usr/lib/gvfs/gvfs-gdu-volume-monitor
+  root      1389  0.0  0.0 156780  3604 ?        Sl   May15   0:00 lightdm --session-child 12 19
+  root       938  0.0  0.0 270672  3488 ?        Ssl  May15   0:00 lightdm
+  matias    1686  0.0  0.0  57728  3444 ?        S    May15   0:00 /usr/lib/x86_64-linux-gnu/gconf/gconfd-2
+  matias    1912  0.0  0.0 273932  3440 ?        Sl   May15   0:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+  root       775  0.0  0.0  79044  3208 ?        Ss   May15   0:00 /usr/sbin/modem-manager
+  matias    1738  0.0  0.0  57052  3208 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd-trash --spawner :1.6 /org/gtk/gvfs/exec_spaw/0
+  matias    1705  0.0  0.0  95960  2984 ?        S    May15   0:00 /usr/lib/pulseaudio/pulse/gconf-helper
+  root     25129  0.0  0.0  50040  2932 ?        Ss   10:46   0:00 /usr/sbin/sshd -D
+  matias    1676  0.0  0.0 273448  2820 ?        Sl   May15   0:00 /usr/lib/gvfs//gvfs-fuse-daemon -f /home/matias/.gvfs
+  matias    1813  0.0  0.0  47864  2728 ?        S    May15   0:00 /usr/lib/geoclue/geoclue-master
+  matias    2370  0.0  0.0 262092  2656 ?        Sl   May15   0:00 /usr/lib/dconf/dconf-service
+  matias    1753  0.0  0.0  52412  2624 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd-burn --spawner :1.6 /org/gtk/gvfs/exec_spaw/1
+  matias    1728  0.0  0.0 142084  2520 ?        Sl   May15   0:00 /usr/lib/gvfs/gvfs-afc-volume-monitor
+  matias    1731  0.0  0.0  60340  2480 ?        S    May15   0:00 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+  root         1  0.0  0.0  24548  2460 ?        Ss   May15   0:00 /sbin/init
+  matias    1674  0.0  0.0  52384  2460 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd
+  102        762  0.0  0.0  25084  2336 ?        Ss   May15   0:00 dbus-daemon --system --fork --activation=upstart
+  matias    1697  0.0  0.0  46128  2172 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd-metadata
+  avahi      793  0.0  0.0  32316  1800 ?        S    May15   0:02 avahi-daemon: running [matias.local]
+  root       777  0.0  0.0  21192  1744 ?        Ss   May15   0:00 /usr/sbin/bluetoothd
+  root       338  0.0  0.0  21892  1716 ?        Ss   May15   0:00 /sbin/udevd --daemon
+  lp       21996  0.0  0.0  52148  1696 ?        S    07:40   0:00 /usr/lib/cups/notifier/dbus dbus:// 
+  root      1375  0.0  0.0   7268  1580 ?        S    May15   0:00 /sbin/dhclient -d -4 -sf /usr/lib/NetworkManager/nm-dhcp-client.action -pf /v
+  syslog     761  0.0  0.0 249476  1576 ?        Sl   May15   0:01 rsyslogd -c5
+  nobody    1453  0.0  0.0  33024  1496 ?        S    May15   0:01 /usr/sbin/dnsmasq --no-resolv --keep-in-foreground --no-hosts --bind-interfac
+  root       514  0.0  0.0  21888  1332 ?        S    May15   0:00 /sbin/udevd --daemon
+  rtkit     1431  0.0  0.0 168876  1328 ?        SNl  May15   0:00 /usr/lib/rtkit/rtkit-daemon
+  matias    4981  0.0  0.0  22476  1224 pts/0    R+   16:13   0:00 ps aux --sort -rss
+  root       515  0.0  0.0  21888  1200 ?        S    May15   0:00 /sbin/udevd --daemon
+  root       959  0.0  0.0  19116  1044 ?        Ss   May15   0:00 cron
+  root       906  0.0  0.0  19988   984 tty2     Ss+  May15   0:00 /sbin/getty -8 38400 tty2
+  root       879  0.0  0.0  19988   980 tty4     Ss+  May15   0:00 /sbin/getty -8 38400 tty4
+  root       886  0.0  0.0  19988   980 tty5     Ss+  May15   0:00 /sbin/getty -8 38400 tty5
+  root      1099  0.0  0.0  19988   980 tty1     Ss+  May15   0:00 /sbin/getty -8 38400 tty1
+  root       911  0.0  0.0  19988   976 tty3     Ss+  May15   0:00 /sbin/getty -8 38400 tty3
+  root       919  0.0  0.0  19988   976 tty6     Ss+  May15   0:00 /sbin/getty -8 38400 tty6
+  matias   22586  0.0  0.0  14792   840 ?        S    09:42   0:00 gnome-pty-helper
+  root       933  0.0  0.0   4464   836 ?        Ss   May15   0:00 acpid -c /etc/acpi/events -s /var/run/acpid.socket
+  root      1723  0.0  0.0  45520   804 ?        S    May15   0:00 udisks-daemon: not polling any devices
+  root       939  0.0  0.0  15984   692 ?        Ss   May15   0:08 /usr/sbin/irqbalance
+  root     28382  0.0  0.0  23820   692 ?        Ss   11:55   0:00 //bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+  root       336  0.0  0.0  17236   640 ?        S    May15   0:00 upstart-udev-bridge --daemon
+  root       723  0.0  0.0  15192   616 ?        S    May15   0:00 upstart-socket-bridge --daemon
+  matias   22576  0.0  0.0   4404   612 ?        Ss   09:42   0:00 /bin/sh -c gnome-terminal
+  matias    1747  0.0  0.0   4404   608 ?        Ss   May15   0:00 /bin/sh -c /usr/bin/compiz-decorator
+  matias    1655  0.0  0.0  26564   540 ?        S    May15   0:00 /usr/bin/dbus-launch --exit-with-session gnome-session --session=ubuntu
+  root     28381  0.0  0.0  26564   540 ?        S    11:55   0:00 dbus-launch --autolaunch=31627581c457d548441745e800000005 --binary-syntax --c
+  avahi      796  0.0  0.0  32184   472 ?        S    May15   0:00 avahi-daemon: chroot helper
+  daemon     960  0.0  0.0  16912   380 ?        Ss   May15   0:00 atd
+  matias    1910  0.0  0.0  11384   356 ?        S    May15   0:00 /bin/cat
+  matias    1652  0.0  0.0  12572   320 ?        Ss   May15   0:00 /usr/bin/ssh-agent /usr/bin/dbus-launch --exit-with-session gnome-session --s
+  root         2  0.0  0.0      0     0 ?        S    May15   0:00 [kthreadd]
+  root         3  0.0  0.0      0     0 ?        S    May15   0:05 [ksoftirqd/0]
+  root         6  0.0  0.0      0     0 ?        S    May15   0:00 [migration/0]
+  root         7  0.0  0.0      0     0 ?        S    May15   0:00 [watchdog/0]
+  root         8  0.0  0.0      0     0 ?        S    May15   0:00 [migration/1]
+  root        10  0.0  0.0      0     0 ?        S    May15   0:06 [ksoftirqd/1]
+  root        11  0.0  0.0      0     0 ?        S    May15   0:00 [watchdog/1]
+  root        12  0.0  0.0      0     0 ?        S<   May15   0:00 [cpuset]
+  root        13  0.0  0.0      0     0 ?        S<   May15   0:00 [khelper]
+  root        14  0.0  0.0      0     0 ?        S    May15   0:00 [kdevtmpfs]
+  root        15  0.0  0.0      0     0 ?        S<   May15   0:00 [netns]
+  root        16  0.0  0.0      0     0 ?        S    May15   0:01 [kworker/u:1]
+  root        17  0.0  0.0      0     0 ?        S    May15   0:00 [sync_supers]
+  root        18  0.0  0.0      0     0 ?        S    May15   0:00 [bdi-default]
+  root        19  0.0  0.0      0     0 ?        S<   May15   0:00 [kintegrityd]
+  root        20  0.0  0.0      0     0 ?        S<   May15   0:00 [kblockd]
+  root        21  0.0  0.0      0     0 ?        S<   May15   0:00 [ata_sff]
+  root        22  0.0  0.0      0     0 ?        S    May15   0:00 [khubd]
+  root        23  0.0  0.0      0     0 ?        S<   May15   0:00 [md]
+  root        26  0.0  0.0      0     0 ?        S    May15   0:00 [khungtaskd]
+  root        27  0.0  0.0      0     0 ?        S    May15   0:00 [kswapd0]
+  root        28  0.0  0.0      0     0 ?        SN   May15   0:00 [ksmd]
+  root        29  0.0  0.0      0     0 ?        SN   May15   0:00 [khugepaged]
+  root        30  0.0  0.0      0     0 ?        S    May15   0:00 [fsnotify_mark]
+  root        31  0.0  0.0      0     0 ?        S    May15   0:00 [ecryptfs-kthrea]
+  root        32  0.0  0.0      0     0 ?        S<   May15   0:00 [crypto]
+  root        41  0.0  0.0      0     0 ?        S<   May15   0:00 [kthrotld]
+  root        43  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_0]
+  root        44  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_1]
+  root        46  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_2]
+  root        47  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_3]
+  root        48  0.0  0.0      0     0 ?        S    May15   0:00 [kworker/u:3]
+  root        50  0.0  0.0      0     0 ?        S<   May15   0:00 [binder]
+  root        70  0.0  0.0      0     0 ?        S<   May15   0:00 [deferwq]
+  root        71  0.0  0.0      0     0 ?        S<   May15   0:00 [charger_manager]
+  root        72  0.0  0.0      0     0 ?        S<   May15   0:00 [devfreq_wq]
+  root       246  0.0  0.0      0     0 ?        S    May15   0:02 [jbd2/sda1-8]
+  root       247  0.0  0.0      0     0 ?        S<   May15   0:00 [ext4-dio-unwrit]
+  root       707  0.0  0.0      0     0 ?        S<   May15   0:00 [hd-audio0]
+  root       727  0.0  0.0      0     0 ?        S<   May15   0:00 [kvm-irqfd-clean]
+  root       787  0.0  0.0      0     0 ?        S<   May15   0:00 [krfcommd]
+  root      2893  0.0  0.0      0     0 ?        S    15:44   0:00 [kworker/0:2]
+  root      3722  0.0  0.0      0     0 ?        S    15:59   0:00 [kworker/0:0]
+  root      4057  0.0  0.0      0     0 ?        S    16:03   0:00 [kworker/1:0]
+  root      4773  0.0  0.0      0     0 ?        S    16:10   0:00 [kworker/0:1]
+  matias    4977  0.0  0.0      0     0 ?        Z    16:13   0:00 [git] <defunct>
+  root     22136  0.0  0.0      0     0 ?        S    09:28   0:00 [flush-8:0]
+  root     22139  0.0  0.0      0     0 ?        S    09:33   0:07 [kworker/1:2]
+
+"ps aux --sort -%cpu" : |
+  USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+  matias   22803 11.7  0.8 512088 32632 ?        Sl   09:43  45:54 gnome-system-monitor
+  matias   22322  5.2 19.8 1490884 802188 ?      Sl   09:35  20:57 /usr/lib/firefox/firefox
+  root       971  1.0  0.6 105380 24492 tty7     Ss+  May15  20:07 /usr/bin/X :0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch -b
+  matias   22376  0.9  2.1 2117648 85696 ?       Sl   09:36   3:56 /opt/sublime_text/sublime_text
+  matias    1683  0.5  2.4 1371256 99360 ?       Sl   May15  10:18 compiz
+  matias   27949  0.4  1.1 452060 47676 ?        Sl   11:48   1:09 /usr/lib/firefox/plugin-container /usr/lib/flashplugin-installer/libflashplay
+  matias   22392  0.2  0.7 350564 31944 ?        Sl   09:36   0:50 /opt/sublime_text/plugin_host 22376
+  matias   22577  0.1  0.5 555828 24124 ?        Sl   09:42   0:33 gnome-terminal
+  matias    3494  0.0  0.6 497476 25268 ?        Sl   15:56   0:00 gedit
+  root     22139  0.0  0.0      0     0 ?        S    09:33   0:07 [kworker/1:2]
+  matias    1755  0.0  1.0 549020 44088 ?        Sl   May15   0:31 /usr/lib/unity/unity-panel-service
+  root      2893  0.0  0.0      0     0 ?        S    15:44   0:00 [kworker/0:2]
+  matias    1473  0.0  0.8 106696 34208 pts/1    Sl+  15:27   0:00 /home/matias/.rvm/rubies/ruby-2.0.0-p451/bin/rake                           
+  matias    1743  0.0  0.2 419480 11524 ?        Sl   May15   0:21 /usr/lib/bamf/bamfdaemon
+  matias    1656  0.0  0.1  30284  5736 ?        Ss   May15   0:20 //bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+  matias    1666  0.0  0.4 679176 18796 ?        Sl   May15   0:16 /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+  matias    1748  0.0  0.2 320552 11940 ?        Sl   May15   0:12 /usr/bin/gtk-window-decorator
+  matias    1757  0.0  0.2 703768 10584 ?        Sl   May15   0:08 /usr/lib/indicator-appmenu/hud-service
+  root       939  0.0  0.0  15984   692 ?        Ss   May15   0:08 /usr/sbin/irqbalance
+  root        10  0.0  0.0      0     0 ?        S    May15   0:06 [ksoftirqd/1]
+  matias    1704  0.0  0.8 919756 35580 ?        Sl   May15   0:06 nautilus -n
+  root         3  0.0  0.0      0     0 ?        S    May15   0:05 [ksoftirqd/0]
+  matias    2014  0.0  0.2 314804 10304 ?        Sl   May15   0:05 gnome-screensaver
+  matias   23542  0.0  0.2  34216 11408 pts/0    Ss   10:24   0:01 -bash
+  root       246  0.0  0.0      0     0 ?        S    May15   0:02 [jbd2/sda1-8]
+  whoopsie   942  0.0  0.1 202280  5112 ?        Ssl  May15   0:02 whoopsie
+  avahi      793  0.0  0.0  32316  1800 ?        S    May15   0:02 avahi-daemon: running [matias.local]
+  matias   22903  0.0  0.2  34164 11360 pts/1    Ss   09:46   0:00 -bash
+  matias    2035  0.0  0.3 407452 13288 ?        Sl   May15   0:02 update-notifier
+  root     22136  0.0  0.0      0     0 ?        S    09:28   0:00 [flush-8:0]
+  matias    1971  0.0  0.6 554976 25388 ?        Sl   May15   0:02 /usr/bin/python /usr/lib/unity-scope-video-remote/unity-scope-video-remote
+  matias    1857  0.0  0.3 827724 14004 ?        Sl   May15   0:01 /usr/lib/unity-lens-applications/unity-applications-daemon
+  root      1722  0.0  0.0 193368  3936 ?        Sl   May15   0:01 /usr/lib/udisks/udisks-daemon
+  matias    2074  0.0  0.0 289456  3968 ?        Sl   May15   0:01 /usr/lib/deja-dup/deja-dup/deja-dup-monitor
+  nobody    1453  0.0  0.0  33024  1496 ?        S    May15   0:01 /usr/sbin/dnsmasq --no-resolv --keep-in-foreground --no-hosts --bind-interfac
+  matias    1617  0.0  0.2 394836  9736 ?        Ssl  May15   0:01 gnome-session --session=ubuntu
+  root        16  0.0  0.0      0     0 ?        S    May15   0:01 [kworker/u:1]
+  syslog     761  0.0  0.0 249476  1576 ?        Sl   May15   0:01 rsyslogd -c5
+  root       791  0.0  0.1 202668  4652 ?        Sl   May15   0:00 /usr/lib/policykit-1/polkitd --no-debug
+  matias    1902  0.0  0.1 417764  5892 ?        Sl   May15   0:00 zeitgeist-datahub
+  matias    1707  0.0  0.4 582096 16420 ?        Sl   May15   0:00 nm-applet
+  root      1114  0.0  0.0 121532  3784 ?        Sl   May15   0:00 /usr/lib/accountsservice/accounts-daemon
+  102        762  0.0  0.0  25084  2336 ?        Ss   May15   0:00 dbus-daemon --system --fork --activation=upstart
+  matias    1702  0.0  0.3 507032 12316 ?        Sl   May15   0:00 bluetooth-applet
+  matias    1709  0.0  0.3 426452 14396 ?        Sl   May15   0:00 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+  matias    1921  0.0  0.2 331704  9252 ?        Sl   May15   0:00 /usr/lib/gnome-disk-utility/gdu-notification-daemon
+  matias    1777  0.0  0.2 563084 10160 ?        Sl   May15   0:00 /usr/lib/indicator-printers/indicator-printers-service
+  matias    1700  0.0  0.2 455136  8804 ?        Sl   May15   0:00 /usr/lib/gnome-settings-daemon/gnome-fallback-mount-helper
+  matias    1985  0.0  0.2 429476 11020 ?        Sl   May15   0:00 telepathy-indicator
+  matias    1863  0.0  0.4 515028 16664 ?        Sl   May15   0:00 /usr/bin/python /usr/lib/unity-lens-video/unity-lens-video
+  root       781  0.0  0.1 237856  5416 ?        Ssl  May15   0:00 NetworkManager
+  matias    1888  0.0  0.1 348244  4972 ?        Sl   May15   0:00 /usr/bin/zeitgeist-daemon
+  rtkit     1431  0.0  0.0 168876  1328 ?        SNl  May15   0:00 /usr/lib/rtkit/rtkit-daemon
+  root         1  0.0  0.0  24548  2460 ?        Ss   May15   0:00 /sbin/init
+  matias    1900  0.0  0.2 246092 10032 ?        Sl   May15   0:00 /usr/lib/zeitgeist/zeitgeist-fts
+  matias    1606  0.0  0.3 450776 13316 ?        Sl   May15   0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+  matias    1779  0.0  0.1 529800  6980 ?        Sl   May15   0:00 /usr/lib/indicator-sound/indicator-sound-service
+  matias    1859  0.0  0.1 942284  7164 ?        Sl   May15   0:00 /usr/lib/unity-lens-files/unity-files-daemon
+  root       818  0.0  0.1 104180  4180 ?        Ss   May15   0:00 /usr/sbin/cupsd -F
+  root         7  0.0  0.0      0     0 ?        S    May15   0:00 [watchdog/0]
+  root      1139  0.0  0.0 1043060 3940 ?        Sl   May15   0:00 /usr/sbin/console-kit-daemon --no-daemon
+  root        11  0.0  0.0      0     0 ?        S    May15   0:00 [watchdog/1]
+  matias    1861  0.0  0.2 672880  8608 ?        Sl   May15   0:00 /usr/lib/unity-lens-music/unity-music-daemon
+  matias    1686  0.0  0.0  57728  3444 ?        S    May15   0:00 /usr/lib/x86_64-linux-gnu/gconf/gconfd-2
+  matias    1652  0.0  0.0  12572   320 ?        Ss   May15   0:00 /usr/bin/ssh-agent /usr/bin/dbus-launch --exit-with-session gnome-session --s
+  matias    1695  0.0  0.1 363220  6388 ?        S<l  May15   0:00 /usr/bin/pulseaudio --start --log-target=syslog
+  matias    1992  0.0  0.1 321308  6376 ?        Sl   May15   0:00 /usr/lib/telepathy/mission-control-5
+  matias    1781  0.0  0.1 646604  6520 ?        Sl   May15   0:00 /usr/lib/indicator-messages/indicator-messages-service
+  matias    1946  0.0  0.1 586416  4360 ?        Sl   May15   0:00 /usr/lib/unity-lens-music/unity-musicstore-daemon
+  matias    1830  0.0  0.1 332928  6476 ?        Sl   May15   0:00 /usr/lib/ubuntu-geoip/ubuntu-geoip-provider
+  root        17  0.0  0.0      0     0 ?        S    May15   0:00 [sync_supers]
+  root       959  0.0  0.0  19116  1044 ?        Ss   May15   0:00 cron
+  matias    1720  0.0  0.0  70300  3760 ?        S    May15   0:00 /usr/lib/gvfs/gvfs-gdu-volume-monitor
+  matias    1773  0.0  0.1 560876  5064 ?        Sl   May15   0:00 /usr/lib/indicator-application/indicator-application-service
+  colord    1415  0.0  0.2 491712 11672 ?        Sl   May15   0:00 /usr/lib/x86_64-linux-gnu/colord/colord
+  matias    1674  0.0  0.0  52384  2460 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd
+  matias    1813  0.0  0.0  47864  2728 ?        S    May15   0:00 /usr/lib/geoclue/geoclue-master
+  root         8  0.0  0.0      0     0 ?        S    May15   0:00 [migration/1]
+  matias    1778  0.0  0.1 602340  6328 ?        Sl   May15   0:00 /usr/lib/indicator-session/indicator-session-service
+  root      2350  0.0  0.3  95416 12344 ?        S    May15   0:00 /usr/bin/python /usr/lib/system-service/system-service-d
+  matias    2370  0.0  0.0 262092  2656 ?        Sl   May15   0:00 /usr/lib/dconf/dconf-service
+  root       336  0.0  0.0  17236   640 ?        S    May15   0:00 upstart-udev-bridge --daemon
+  root       338  0.0  0.0  21892  1716 ?        Ss   May15   0:00 /sbin/udevd --daemon
+  root        26  0.0  0.0      0     0 ?        S    May15   0:00 [khungtaskd]
+  root      1252  0.0  0.1 219908  4368 ?        Sl   May15   0:00 /usr/lib/upower/upowerd
+  matias    1780  0.0  0.1 565572  7516 ?        Sl   May15   0:00 /usr/lib/indicator-datetime/indicator-datetime-service
+  root         6  0.0  0.0      0     0 ?        S    May15   0:00 [migration/0]
+  root        48  0.0  0.0      0     0 ?        S    May15   0:00 [kworker/u:3]
+  root       775  0.0  0.0  79044  3208 ?        Ss   May15   0:00 /usr/sbin/modem-manager
+  root       938  0.0  0.0 270672  3488 ?        Ssl  May15   0:00 lightdm
+  matias    1738  0.0  0.0  57052  3208 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd-trash --spawner :1.6 /org/gtk/gvfs/exec_spaw/0
+  matias    1997  0.0  0.3 400244 13800 ?        Sl   May15   0:00 /usr/lib/gnome-online-accounts/goa-daemon
+  root         2  0.0  0.0      0     0 ?        S    May15   0:00 [kthreadd]
+  root        12  0.0  0.0      0     0 ?        S<   May15   0:00 [cpuset]
+  root        13  0.0  0.0      0     0 ?        S<   May15   0:00 [khelper]
+  root        14  0.0  0.0      0     0 ?        S    May15   0:00 [kdevtmpfs]
+  root        15  0.0  0.0      0     0 ?        S<   May15   0:00 [netns]
+  root        18  0.0  0.0      0     0 ?        S    May15   0:00 [bdi-default]
+  root        19  0.0  0.0      0     0 ?        S<   May15   0:00 [kintegrityd]
+  root        20  0.0  0.0      0     0 ?        S<   May15   0:00 [kblockd]
+  root        21  0.0  0.0      0     0 ?        S<   May15   0:00 [ata_sff]
+  root        22  0.0  0.0      0     0 ?        S    May15   0:00 [khubd]
+  root        23  0.0  0.0      0     0 ?        S<   May15   0:00 [md]
+  root        27  0.0  0.0      0     0 ?        S    May15   0:00 [kswapd0]
+  root        28  0.0  0.0      0     0 ?        SN   May15   0:00 [ksmd]
+  root        29  0.0  0.0      0     0 ?        SN   May15   0:00 [khugepaged]
+  root        30  0.0  0.0      0     0 ?        S    May15   0:00 [fsnotify_mark]
+  root        31  0.0  0.0      0     0 ?        S    May15   0:00 [ecryptfs-kthrea]
+  root        32  0.0  0.0      0     0 ?        S<   May15   0:00 [crypto]
+  root        41  0.0  0.0      0     0 ?        S<   May15   0:00 [kthrotld]
+  root        43  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_0]
+  root        44  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_1]
+  root        46  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_2]
+  root        47  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_3]
+  root        50  0.0  0.0      0     0 ?        S<   May15   0:00 [binder]
+  root        70  0.0  0.0      0     0 ?        S<   May15   0:00 [deferwq]
+  root        71  0.0  0.0      0     0 ?        S<   May15   0:00 [charger_manager]
+  root        72  0.0  0.0      0     0 ?        S<   May15   0:00 [devfreq_wq]
+  root       247  0.0  0.0      0     0 ?        S<   May15   0:00 [ext4-dio-unwrit]
+  root       514  0.0  0.0  21888  1332 ?        S    May15   0:00 /sbin/udevd --daemon
+  root       515  0.0  0.0  21888  1200 ?        S    May15   0:00 /sbin/udevd --daemon
+  root       707  0.0  0.0      0     0 ?        S<   May15   0:00 [hd-audio0]
+  root       723  0.0  0.0  15192   616 ?        S    May15   0:00 upstart-socket-bridge --daemon
+  root       727  0.0  0.0      0     0 ?        S<   May15   0:00 [kvm-irqfd-clean]
+  root       777  0.0  0.0  21192  1744 ?        Ss   May15   0:00 /usr/sbin/bluetoothd
+  root       787  0.0  0.0      0     0 ?        S<   May15   0:00 [krfcommd]
+  avahi      796  0.0  0.0  32184   472 ?        S    May15   0:00 avahi-daemon: chroot helper
+  root       879  0.0  0.0  19988   980 tty4     Ss+  May15   0:00 /sbin/getty -8 38400 tty4
+  root       886  0.0  0.0  19988   980 tty5     Ss+  May15   0:00 /sbin/getty -8 38400 tty5
+  root       906  0.0  0.0  19988   984 tty2     Ss+  May15   0:00 /sbin/getty -8 38400 tty2
+  root       911  0.0  0.0  19988   976 tty3     Ss+  May15   0:00 /sbin/getty -8 38400 tty3
+  root       919  0.0  0.0  19988   976 tty6     Ss+  May15   0:00 /sbin/getty -8 38400 tty6
+  root       933  0.0  0.0   4464   836 ?        Ss   May15   0:00 acpid -c /etc/acpi/events -s /var/run/acpid.socket
+  daemon     960  0.0  0.0  16912   380 ?        Ss   May15   0:00 atd
+  root      1099  0.0  0.0  19988   980 tty1     Ss+  May15   0:00 /sbin/getty -8 38400 tty1
+  root      1375  0.0  0.0   7268  1580 ?        S    May15   0:00 /sbin/dhclient -d -4 -sf /usr/lib/NetworkManager/nm-dhcp-client.action -pf /v
+  root      1389  0.0  0.0 156780  3604 ?        Sl   May15   0:00 lightdm --session-child 12 19
+  matias    1655  0.0  0.0  26564   540 ?        S    May15   0:00 /usr/bin/dbus-launch --exit-with-session gnome-session --session=ubuntu
+  matias    1676  0.0  0.0 273448  2820 ?        Sl   May15   0:00 /usr/lib/gvfs//gvfs-fuse-daemon -f /home/matias/.gvfs
+  matias    1697  0.0  0.0  46128  2172 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd-metadata
+  matias    1705  0.0  0.0  95960  2984 ?        S    May15   0:00 /usr/lib/pulseaudio/pulse/gconf-helper
+  root      1723  0.0  0.0  45520   804 ?        S    May15   0:00 udisks-daemon: not polling any devices
+  matias    1728  0.0  0.0 142084  2520 ?        Sl   May15   0:00 /usr/lib/gvfs/gvfs-afc-volume-monitor
+  matias    1731  0.0  0.0  60340  2480 ?        S    May15   0:00 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+  matias    1747  0.0  0.0   4404   608 ?        Ss   May15   0:00 /bin/sh -c /usr/bin/compiz-decorator
+  matias    1753  0.0  0.0  52412  2624 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd-burn --spawner :1.6 /org/gtk/gvfs/exec_spaw/1
+  matias    1910  0.0  0.0  11384   356 ?        S    May15   0:00 /bin/cat
+  matias    1912  0.0  0.0 273932  3440 ?        Sl   May15   0:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+  root      3722  0.0  0.0      0     0 ?        S    15:59   0:00 [kworker/0:0]
+  root      4057  0.0  0.0      0     0 ?        S    16:03   0:00 [kworker/1:0]
+  root      4773  0.0  0.0      0     0 ?        S    16:10   0:00 [kworker/0:1]
+  matias    5029  0.0  0.0  22476  1220 pts/0    R+   16:13   0:00 ps aux --sort -%cpu
+  lp       21996  0.0  0.0  52148  1696 ?        S    07:40   0:00 /usr/lib/cups/notifier/dbus dbus:// 
+  matias   22576  0.0  0.0   4404   612 ?        Ss   09:42   0:00 /bin/sh -c gnome-terminal
+  matias   22586  0.0  0.0  14792   840 ?        S    09:42   0:00 gnome-pty-helper
+  root     25129  0.0  0.0  50040  2932 ?        Ss   10:46   0:00 /usr/sbin/sshd -D
+  root     28381  0.0  0.0  26564   540 ?        S    11:55   0:00 dbus-launch --autolaunch=31627581c457d548441745e800000005 --binary-syntax --c
+  root     28382  0.0  0.0  23820   692 ?        Ss   11:55   0:00 //bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+
+"ps aux --sort -pid": |
+  USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+  root     28382  0.0  0.0  23820   692 ?        Ss   11:55   0:00 //bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+  root     28381  0.0  0.0  26564   540 ?        S    11:55   0:00 dbus-launch --autolaunch=31627581c457d548441745e800000005 --binary-syntax --c
+  matias   27949  0.4  1.1 452060 47676 ?        Sl   11:48   1:10 /usr/lib/firefox/plugin-container /usr/lib/flashplugin-installer/libflashplay
+  root     25129  0.0  0.0  50040  2932 ?        Ss   10:46   0:00 /usr/sbin/sshd -D
+  matias   23542  0.0  0.2  34216 11408 pts/0    Ss   10:24   0:01 -bash
+  matias   22903  0.0  0.2  34164 11360 pts/1    Ss   09:46   0:00 -bash
+  matias   22803 11.7  0.8 512088 32648 ?        Sl   09:43  45:58 gnome-system-monitor
+  matias   22586  0.0  0.0  14792   840 ?        S    09:42   0:00 gnome-pty-helper
+  matias   22577  0.1  0.6 555828 24384 ?        Sl   09:42   0:33 gnome-terminal
+  matias   22576  0.0  0.0   4404   612 ?        Ss   09:42   0:00 /bin/sh -c gnome-terminal
+  matias   22392  0.2  0.7 350564 31984 ?        Sl   09:36   0:51 /opt/sublime_text/plugin_host 22376
+  matias   22376  1.0  2.1 2120280 88608 ?       Sl   09:36   4:00 /opt/sublime_text/sublime_text
+  matias   22322  5.2 21.4 1530692 867620 ?      Sl   09:35  21:00 /usr/lib/firefox/firefox
+  root     22139  0.0  0.0      0     0 ?        S    09:33   0:07 [kworker/1:2]
+  root     22136  0.0  0.0      0     0 ?        S    09:28   0:00 [flush-8:0]
+  lp       21996  0.0  0.0  52148  1696 ?        S    07:40   0:00 /usr/lib/cups/notifier/dbus dbus:// 
+  matias    5052  0.0  0.0  22476  1224 pts/0    R+   16:14   0:00 ps aux --sort -pid
+  root      4773  0.0  0.0      0     0 ?        S    16:10   0:00 [kworker/0:1]
+  root      4057  0.0  0.0      0     0 ?        S    16:03   0:00 [kworker/1:0]
+  root      3722  0.0  0.0      0     0 ?        S    15:59   0:00 [kworker/0:0]
+  matias    3494  0.0  0.6 497476 25268 ?        Sl   15:56   0:00 gedit
+  root      2893  0.0  0.0      0     0 ?        S    15:44   0:00 [kworker/0:2]
+  matias    2370  0.0  0.0 262092  2656 ?        Sl   May15   0:00 /usr/lib/dconf/dconf-service
+  root      2350  0.0  0.3  95416 12344 ?        S    May15   0:00 /usr/bin/python /usr/lib/system-service/system-service-d
+  matias    2074  0.0  0.0 289456  3968 ?        Sl   May15   0:01 /usr/lib/deja-dup/deja-dup/deja-dup-monitor
+  matias    2035  0.0  0.3 407452 13288 ?        Sl   May15   0:02 update-notifier
+  matias    2014  0.0  0.2 314804 10304 ?        Sl   May15   0:05 gnome-screensaver
+  matias    1997  0.0  0.3 400244 13800 ?        Sl   May15   0:00 /usr/lib/gnome-online-accounts/goa-daemon
+  matias    1992  0.0  0.1 321308  6376 ?        Sl   May15   0:00 /usr/lib/telepathy/mission-control-5
+  matias    1985  0.0  0.2 429476 11020 ?        Sl   May15   0:00 telepathy-indicator
+  matias    1971  0.0  0.6 554976 25388 ?        Sl   May15   0:02 /usr/bin/python /usr/lib/unity-scope-video-remote/unity-scope-video-remote
+  matias    1946  0.0  0.1 586416  4360 ?        Sl   May15   0:00 /usr/lib/unity-lens-music/unity-musicstore-daemon
+  matias    1921  0.0  0.2 331704  9252 ?        Sl   May15   0:00 /usr/lib/gnome-disk-utility/gdu-notification-daemon
+  matias    1912  0.0  0.0 273932  3440 ?        Sl   May15   0:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+  matias    1910  0.0  0.0  11384   356 ?        S    May15   0:00 /bin/cat
+  matias    1902  0.0  0.1 417764  5892 ?        Sl   May15   0:00 zeitgeist-datahub
+  matias    1900  0.0  0.2 246092 10032 ?        Sl   May15   0:00 /usr/lib/zeitgeist/zeitgeist-fts
+  matias    1888  0.0  0.1 348244  4972 ?        Sl   May15   0:00 /usr/bin/zeitgeist-daemon
+  matias    1863  0.0  0.4 515028 16664 ?        Sl   May15   0:00 /usr/bin/python /usr/lib/unity-lens-video/unity-lens-video
+  matias    1861  0.0  0.2 672880  8608 ?        Sl   May15   0:00 /usr/lib/unity-lens-music/unity-music-daemon
+  matias    1859  0.0  0.1 942284  7164 ?        Sl   May15   0:00 /usr/lib/unity-lens-files/unity-files-daemon
+  matias    1857  0.0  0.3 827724 14004 ?        Sl   May15   0:01 /usr/lib/unity-lens-applications/unity-applications-daemon
+  matias    1830  0.0  0.1 332928  6476 ?        Sl   May15   0:00 /usr/lib/ubuntu-geoip/ubuntu-geoip-provider
+  matias    1813  0.0  0.0  47864  2728 ?        S    May15   0:00 /usr/lib/geoclue/geoclue-master
+  matias    1781  0.0  0.1 646604  6520 ?        Sl   May15   0:00 /usr/lib/indicator-messages/indicator-messages-service
+  matias    1780  0.0  0.1 565572  7516 ?        Sl   May15   0:00 /usr/lib/indicator-datetime/indicator-datetime-service
+  matias    1779  0.0  0.1 529800  6980 ?        Sl   May15   0:00 /usr/lib/indicator-sound/indicator-sound-service
+  matias    1778  0.0  0.1 602340  6328 ?        Sl   May15   0:00 /usr/lib/indicator-session/indicator-session-service
+  matias    1777  0.0  0.2 563084 10160 ?        Sl   May15   0:00 /usr/lib/indicator-printers/indicator-printers-service
+  matias    1773  0.0  0.1 560876  5064 ?        Sl   May15   0:00 /usr/lib/indicator-application/indicator-application-service
+  matias    1757  0.0  0.2 703768 10584 ?        Sl   May15   0:08 /usr/lib/indicator-appmenu/hud-service
+  matias    1755  0.0  1.0 549020 44096 ?        Sl   May15   0:31 /usr/lib/unity/unity-panel-service
+  matias    1753  0.0  0.0  52412  2624 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd-burn --spawner :1.6 /org/gtk/gvfs/exec_spaw/1
+  matias    1748  0.0  0.2 320552 11940 ?        Sl   May15   0:12 /usr/bin/gtk-window-decorator
+  matias    1747  0.0  0.0   4404   608 ?        Ss   May15   0:00 /bin/sh -c /usr/bin/compiz-decorator
+  matias    1743  0.0  0.2 419480 11524 ?        Sl   May15   0:21 /usr/lib/bamf/bamfdaemon
+  matias    1738  0.0  0.0  57052  3208 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd-trash --spawner :1.6 /org/gtk/gvfs/exec_spaw/0
+  matias    1731  0.0  0.0  60340  2480 ?        S    May15   0:00 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+  matias    1728  0.0  0.0 142084  2520 ?        Sl   May15   0:00 /usr/lib/gvfs/gvfs-afc-volume-monitor
+  root      1723  0.0  0.0  45520   804 ?        S    May15   0:00 udisks-daemon: not polling any devices
+  root      1722  0.0  0.0 193368  3936 ?        Sl   May15   0:01 /usr/lib/udisks/udisks-daemon
+  matias    1720  0.0  0.0  70300  3760 ?        S    May15   0:00 /usr/lib/gvfs/gvfs-gdu-volume-monitor
+  matias    1709  0.0  0.3 426452 14396 ?        Sl   May15   0:00 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+  matias    1707  0.0  0.4 582096 16420 ?        Sl   May15   0:00 nm-applet
+  matias    1705  0.0  0.0  95960  2984 ?        S    May15   0:00 /usr/lib/pulseaudio/pulse/gconf-helper
+  matias    1704  0.0  0.8 919756 35580 ?        Sl   May15   0:06 nautilus -n
+  matias    1702  0.0  0.3 507032 12316 ?        Sl   May15   0:00 bluetooth-applet
+  matias    1700  0.0  0.2 455136  8804 ?        Sl   May15   0:00 /usr/lib/gnome-settings-daemon/gnome-fallback-mount-helper
+  matias    1697  0.0  0.0  46128  2172 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd-metadata
+  matias    1695  0.0  0.1 363220  6388 ?        S<l  May15   0:00 /usr/bin/pulseaudio --start --log-target=syslog
+  matias    1686  0.0  0.0  57728  3444 ?        S    May15   0:00 /usr/lib/x86_64-linux-gnu/gconf/gconfd-2
+  matias    1683  0.5  2.4 1371248 99352 ?       Sl   May15  10:18 compiz
+  matias    1676  0.0  0.0 273448  2820 ?        Sl   May15   0:00 /usr/lib/gvfs//gvfs-fuse-daemon -f /home/matias/.gvfs
+  matias    1674  0.0  0.0  52384  2460 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd
+  matias    1666  0.0  0.4 679176 18796 ?        Sl   May15   0:16 /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+  matias    1656  0.0  0.1  30284  5736 ?        Ss   May15   0:20 //bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+  matias    1655  0.0  0.0  26564   540 ?        S    May15   0:00 /usr/bin/dbus-launch --exit-with-session gnome-session --session=ubuntu
+  matias    1652  0.0  0.0  12572   320 ?        Ss   May15   0:00 /usr/bin/ssh-agent /usr/bin/dbus-launch --exit-with-session gnome-session --s
+  matias    1617  0.0  0.2 394836  9736 ?        Ssl  May15   0:01 gnome-session --session=ubuntu
+  matias    1606  0.0  0.3 450776 13316 ?        Sl   May15   0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+  matias    1473  0.0  0.8 106696 34208 pts/1    Sl+  15:27   0:00 /home/matias/.rvm/rubies/ruby-2.0.0-p451/bin/rake                           
+  nobody    1453  0.0  0.0  33024  1496 ?        S    May15   0:01 /usr/sbin/dnsmasq --no-resolv --keep-in-foreground --no-hosts --bind-interfac
+  rtkit     1431  0.0  0.0 168876  1328 ?        SNl  May15   0:00 /usr/lib/rtkit/rtkit-daemon
+  colord    1415  0.0  0.2 491712 11672 ?        Sl   May15   0:00 /usr/lib/x86_64-linux-gnu/colord/colord
+  root      1389  0.0  0.0 156780  3604 ?        Sl   May15   0:00 lightdm --session-child 12 19
+  root      1375  0.0  0.0   7268  1580 ?        S    May15   0:00 /sbin/dhclient -d -4 -sf /usr/lib/NetworkManager/nm-dhcp-client.action -pf /v
+  root      1252  0.0  0.1 219908  4368 ?        Sl   May15   0:00 /usr/lib/upower/upowerd
+  root      1139  0.0  0.0 1043060 3940 ?        Sl   May15   0:00 /usr/sbin/console-kit-daemon --no-daemon
+  root      1114  0.0  0.0 121532  3784 ?        Sl   May15   0:00 /usr/lib/accountsservice/accounts-daemon
+  root      1099  0.0  0.0  19988   980 tty1     Ss+  May15   0:00 /sbin/getty -8 38400 tty1
+  root       971  1.0  0.6 105380 24492 tty7     Ss+  May15  20:09 /usr/bin/X :0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch -b
+  daemon     960  0.0  0.0  16912   380 ?        Ss   May15   0:00 atd
+  root       959  0.0  0.0  19116  1044 ?        Ss   May15   0:00 cron
+  whoopsie   942  0.0  0.1 202280  5112 ?        Ssl  May15   0:02 whoopsie
+  root       939  0.0  0.0  15984   692 ?        Ss   May15   0:08 /usr/sbin/irqbalance
+  root       938  0.0  0.0 270672  3488 ?        Ssl  May15   0:00 lightdm
+  root       933  0.0  0.0   4464   836 ?        Ss   May15   0:00 acpid -c /etc/acpi/events -s /var/run/acpid.socket
+  root       919  0.0  0.0  19988   976 tty6     Ss+  May15   0:00 /sbin/getty -8 38400 tty6
+  root       911  0.0  0.0  19988   976 tty3     Ss+  May15   0:00 /sbin/getty -8 38400 tty3
+  root       906  0.0  0.0  19988   984 tty2     Ss+  May15   0:00 /sbin/getty -8 38400 tty2
+  root       886  0.0  0.0  19988   980 tty5     Ss+  May15   0:00 /sbin/getty -8 38400 tty5
+  root       879  0.0  0.0  19988   980 tty4     Ss+  May15   0:00 /sbin/getty -8 38400 tty4
+  root       818  0.0  0.1 104180  4180 ?        Ss   May15   0:00 /usr/sbin/cupsd -F
+  avahi      796  0.0  0.0  32184   472 ?        S    May15   0:00 avahi-daemon: chroot helper
+  avahi      793  0.0  0.0  32316  1800 ?        S    May15   0:02 avahi-daemon: running [matias.local]
+  root       791  0.0  0.1 202668  4652 ?        Sl   May15   0:00 /usr/lib/policykit-1/polkitd --no-debug
+  root       787  0.0  0.0      0     0 ?        S<   May15   0:00 [krfcommd]
+  root       781  0.0  0.1 237856  5416 ?        Ssl  May15   0:00 NetworkManager
+  root       777  0.0  0.0  21192  1744 ?        Ss   May15   0:00 /usr/sbin/bluetoothd
+  root       775  0.0  0.0  79044  3208 ?        Ss   May15   0:00 /usr/sbin/modem-manager
+  102        762  0.0  0.0  25084  2336 ?        Ss   May15   0:00 dbus-daemon --system --fork --activation=upstart
+  syslog     761  0.0  0.0 249476  1576 ?        Sl   May15   0:01 rsyslogd -c5
+  root       727  0.0  0.0      0     0 ?        S<   May15   0:00 [kvm-irqfd-clean]
+  root       723  0.0  0.0  15192   616 ?        S    May15   0:00 upstart-socket-bridge --daemon
+  root       707  0.0  0.0      0     0 ?        S<   May15   0:00 [hd-audio0]
+  root       515  0.0  0.0  21888  1200 ?        S    May15   0:00 /sbin/udevd --daemon
+  root       514  0.0  0.0  21888  1332 ?        S    May15   0:00 /sbin/udevd --daemon
+  root       338  0.0  0.0  21892  1716 ?        Ss   May15   0:00 /sbin/udevd --daemon
+  root       336  0.0  0.0  17236   640 ?        S    May15   0:00 upstart-udev-bridge --daemon
+  root       247  0.0  0.0      0     0 ?        S<   May15   0:00 [ext4-dio-unwrit]
+  root       246  0.0  0.0      0     0 ?        S    May15   0:02 [jbd2/sda1-8]
+  root        72  0.0  0.0      0     0 ?        S<   May15   0:00 [devfreq_wq]
+  root        71  0.0  0.0      0     0 ?        S<   May15   0:00 [charger_manager]
+  root        70  0.0  0.0      0     0 ?        S<   May15   0:00 [deferwq]
+  root        50  0.0  0.0      0     0 ?        S<   May15   0:00 [binder]
+  root        48  0.0  0.0      0     0 ?        S    May15   0:00 [kworker/u:3]
+  root        47  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_3]
+  root        46  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_2]
+  root        44  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_1]
+  root        43  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_0]
+  root        41  0.0  0.0      0     0 ?        S<   May15   0:00 [kthrotld]
+  root        32  0.0  0.0      0     0 ?        S<   May15   0:00 [crypto]
+  root        31  0.0  0.0      0     0 ?        S    May15   0:00 [ecryptfs-kthrea]
+  root        30  0.0  0.0      0     0 ?        S    May15   0:00 [fsnotify_mark]
+  root        29  0.0  0.0      0     0 ?        SN   May15   0:00 [khugepaged]
+  root        28  0.0  0.0      0     0 ?        SN   May15   0:00 [ksmd]
+  root        27  0.0  0.0      0     0 ?        S    May15   0:00 [kswapd0]
+  root        26  0.0  0.0      0     0 ?        S    May15   0:00 [khungtaskd]
+  root        23  0.0  0.0      0     0 ?        S<   May15   0:00 [md]
+  root        22  0.0  0.0      0     0 ?        S    May15   0:00 [khubd]
+  root        21  0.0  0.0      0     0 ?        S<   May15   0:00 [ata_sff]
+  root        20  0.0  0.0      0     0 ?        S<   May15   0:00 [kblockd]
+  root        19  0.0  0.0      0     0 ?        S<   May15   0:00 [kintegrityd]
+  root        18  0.0  0.0      0     0 ?        S    May15   0:00 [bdi-default]
+  root        17  0.0  0.0      0     0 ?        S    May15   0:00 [sync_supers]
+  root        16  0.0  0.0      0     0 ?        S    May15   0:01 [kworker/u:1]
+  root        15  0.0  0.0      0     0 ?        S<   May15   0:00 [netns]
+  root        14  0.0  0.0      0     0 ?        S    May15   0:00 [kdevtmpfs]
+  root        13  0.0  0.0      0     0 ?        S<   May15   0:00 [khelper]
+  root        12  0.0  0.0      0     0 ?        S<   May15   0:00 [cpuset]
+  root        11  0.0  0.0      0     0 ?        S    May15   0:00 [watchdog/1]
+  root        10  0.0  0.0      0     0 ?        S    May15   0:06 [ksoftirqd/1]
+  root         8  0.0  0.0      0     0 ?        S    May15   0:00 [migration/1]
+  root         7  0.0  0.0      0     0 ?        S    May15   0:00 [watchdog/0]
+  root         6  0.0  0.0      0     0 ?        S    May15   0:00 [migration/0]
+  root         3  0.0  0.0      0     0 ?        S    May15   0:05 [ksoftirqd/0]
+  root         2  0.0  0.0      0     0 ?        S    May15   0:00 [kthreadd]
+  root         1  0.0  0.0  24548  2460 ?        Ss   May15   0:00 /sbin/init
+
+"ps aux": |
+  USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+  root         1  0.0  0.0  24548  2460 ?        Ss   May15   0:00 /sbin/init
+  root         2  0.0  0.0      0     0 ?        S    May15   0:00 [kthreadd]
+  root         3  0.0  0.0      0     0 ?        S    May15   0:06 [ksoftirqd/0]
+  root         6  0.0  0.0      0     0 ?        S    May15   0:00 [migration/0]
+  root         7  0.0  0.0      0     0 ?        S    May15   0:00 [watchdog/0]
+  root         8  0.0  0.0      0     0 ?        S    May15   0:00 [migration/1]
+  root        10  0.0  0.0      0     0 ?        S    May15   0:07 [ksoftirqd/1]
+  root        11  0.0  0.0      0     0 ?        S    May15   0:00 [watchdog/1]
+  root        12  0.0  0.0      0     0 ?        S<   May15   0:00 [cpuset]
+  root        13  0.0  0.0      0     0 ?        S<   May15   0:00 [khelper]
+  root        14  0.0  0.0      0     0 ?        S    May15   0:00 [kdevtmpfs]
+  root        15  0.0  0.0      0     0 ?        S<   May15   0:00 [netns]
+  root        16  0.0  0.0      0     0 ?        S    May15   0:01 [kworker/u:1]
+  root        17  0.0  0.0      0     0 ?        S    May15   0:00 [sync_supers]
+  root        18  0.0  0.0      0     0 ?        S    May15   0:00 [bdi-default]
+  root        19  0.0  0.0      0     0 ?        S<   May15   0:00 [kintegrityd]
+  root        20  0.0  0.0      0     0 ?        S<   May15   0:00 [kblockd]
+  root        21  0.0  0.0      0     0 ?        S<   May15   0:00 [ata_sff]
+  root        22  0.0  0.0      0     0 ?        S    May15   0:00 [khubd]
+  root        23  0.0  0.0      0     0 ?        S<   May15   0:00 [md]
+  root        26  0.0  0.0      0     0 ?        S    May15   0:00 [khungtaskd]
+  root        27  0.0  0.0      0     0 ?        S    May15   0:00 [kswapd0]
+  root        28  0.0  0.0      0     0 ?        SN   May15   0:00 [ksmd]
+  root        29  0.0  0.0      0     0 ?        SN   May15   0:00 [khugepaged]
+  root        30  0.0  0.0      0     0 ?        S    May15   0:00 [fsnotify_mark]
+  root        31  0.0  0.0      0     0 ?        S    May15   0:00 [ecryptfs-kthrea]
+  root        32  0.0  0.0      0     0 ?        S<   May15   0:00 [crypto]
+  root        41  0.0  0.0      0     0 ?        S<   May15   0:00 [kthrotld]
+  root        43  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_0]
+  root        44  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_1]
+  root        46  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_2]
+  root        47  0.0  0.0      0     0 ?        S    May15   0:00 [scsi_eh_3]
+  root        48  0.0  0.0      0     0 ?        S    May15   0:00 [kworker/u:3]
+  root        50  0.0  0.0      0     0 ?        S<   May15   0:00 [binder]
+  root        70  0.0  0.0      0     0 ?        S<   May15   0:00 [deferwq]
+  root        71  0.0  0.0      0     0 ?        S<   May15   0:00 [charger_manager]
+  root        72  0.0  0.0      0     0 ?        S<   May15   0:00 [devfreq_wq]
+  root       246  0.0  0.0      0     0 ?        S    May15   0:03 [jbd2/sda1-8]
+  root       247  0.0  0.0      0     0 ?        S<   May15   0:00 [ext4-dio-unwrit]
+  root       336  0.0  0.0  17236   640 ?        S    May15   0:00 upstart-udev-bridge --daemon
+  root       338  0.0  0.0  21892  1716 ?        Ss   May15   0:00 /sbin/udevd --daemon
+  root       514  0.0  0.0  21888  1332 ?        S    May15   0:00 /sbin/udevd --daemon
+  root       515  0.0  0.0  21888  1200 ?        S    May15   0:00 /sbin/udevd --daemon
+  root       707  0.0  0.0      0     0 ?        S<   May15   0:00 [hd-audio0]
+  root       723  0.0  0.0  15192   616 ?        S    May15   0:00 upstart-socket-bridge --daemon
+  root       727  0.0  0.0      0     0 ?        S<   May15   0:00 [kvm-irqfd-clean]
+  syslog     761  0.0  0.0 249476  1576 ?        Sl   May15   0:01 rsyslogd -c5
+  102        762  0.0  0.0  25084  2336 ?        Ss   May15   0:01 dbus-daemon --system --fork --activation=upstart
+  root       775  0.0  0.0  79044  3208 ?        Ss   May15   0:00 /usr/sbin/modem-manager
+  root       777  0.0  0.0  21192  1744 ?        Ss   May15   0:00 /usr/sbin/bluetoothd
+  root       781  0.0  0.1 237856  5416 ?        Ssl  May15   0:00 NetworkManager
+  root       787  0.0  0.0      0     0 ?        S<   May15   0:00 [krfcommd]
+  root       791  0.0  0.1 202668  4652 ?        Sl   May15   0:02 /usr/lib/policykit-1/polkitd --no-debug
+  avahi      793  0.0  0.0  32316  1800 ?        S    May15   0:02 avahi-daemon: running [matias.local]
+  avahi      796  0.0  0.0  32184   472 ?        S    May15   0:00 avahi-daemon: chroot helper
+  root       818  0.0  0.1 104180  4180 ?        Ss   May15   0:00 /usr/sbin/cupsd -F
+  root       879  0.0  0.0  19988   980 tty4     Ss+  May15   0:00 /sbin/getty -8 38400 tty4
+  root       886  0.0  0.0  19988   980 tty5     Ss+  May15   0:00 /sbin/getty -8 38400 tty5
+  root       906  0.0  0.0  19988   984 tty2     Ss+  May15   0:00 /sbin/getty -8 38400 tty2
+  root       911  0.0  0.0  19988   976 tty3     Ss+  May15   0:00 /sbin/getty -8 38400 tty3
+  root       919  0.0  0.0  19988   976 tty6     Ss+  May15   0:00 /sbin/getty -8 38400 tty6
+  root       933  0.0  0.0   4464   836 ?        Ss   May15   0:00 acpid -c /etc/acpi/events -s /var/run/acpid.socket
+  root       938  0.0  0.0 270672  3488 ?        Ssl  May15   0:00 lightdm
+  root       939  0.0  0.0  15984   692 ?        Ss   May15   0:08 /usr/sbin/irqbalance
+  whoopsie   942  0.0  0.1 202280  5112 ?        Ssl  May15   0:02 whoopsie
+  root       959  0.0  0.0  19116  1044 ?        Ss   May15   0:00 cron
+  daemon     960  0.0  0.0  16912   380 ?        Ss   May15   0:00 atd
+  root       971  1.1  0.6 105380 24492 tty7     Ss+  May15  21:54 /usr/bin/X :0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch -b
+  root      1099  0.0  0.0  19988   980 tty1     Ss+  May15   0:00 /sbin/getty -8 38400 tty1
+  root      1114  0.0  0.0 121532  3784 ?        Sl   May15   0:00 /usr/lib/accountsservice/accounts-daemon
+  root      1139  0.0  0.0 1043060 3940 ?        Sl   May15   0:00 /usr/sbin/console-kit-daemon --no-daemon
+  root      1252  0.0  0.1 219908  4368 ?        Sl   May15   0:00 /usr/lib/upower/upowerd
+  root      1375  0.0  0.0   7268  1580 ?        S    May15   0:00 /sbin/dhclient -d -4 -sf /usr/lib/NetworkManager/nm-dhcp-client.action -pf /v
+  root      1389  0.0  0.0 156780  3604 ?        Sl   May15   0:00 lightdm --session-child 12 19
+  colord    1415  0.0  0.2 491712 11672 ?        Sl   May15   0:00 /usr/lib/x86_64-linux-gnu/colord/colord
+  rtkit     1431  0.0  0.0 168876  1328 ?        SNl  May15   0:00 /usr/lib/rtkit/rtkit-daemon
+  nobody    1453  0.0  0.0  33024  1496 ?        S    May15   0:01 /usr/sbin/dnsmasq --no-resolv --keep-in-foreground --no-hosts --bind-interfac
+  matias    1606  0.0  0.3 450776 13324 ?        Sl   May15   0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+  matias    1617  0.0  0.2 394836  9736 ?        Ssl  May15   0:01 gnome-session --session=ubuntu
+  matias    1652  0.0  0.0  12572   320 ?        Ss   May15   0:00 /usr/bin/ssh-agent /usr/bin/dbus-launch --exit-with-session gnome-session --s
+  matias    1655  0.0  0.0  26564   540 ?        S    May15   0:00 /usr/bin/dbus-launch --exit-with-session gnome-session --session=ubuntu
+  matias    1656  0.0  0.1  30900  6456 ?        Ss   May15   0:22 //bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+  matias    1666  0.0  0.4 679176 18796 ?        Sl   May15   0:17 /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+  matias    1674  0.0  0.0  52384  2460 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd
+  matias    1676  0.0  0.0 273448  2820 ?        Sl   May15   0:00 /usr/lib/gvfs//gvfs-fuse-daemon -f /home/matias/.gvfs
+  matias    1683  0.5  2.4 1371260 99364 ?       Sl   May15  11:08 compiz
+  matias    1686  0.0  0.0  57728  3444 ?        S    May15   0:00 /usr/lib/x86_64-linux-gnu/gconf/gconfd-2
+  matias    1695  0.0  0.1 363220  6388 ?        S<l  May15   0:00 /usr/bin/pulseaudio --start --log-target=syslog
+  matias    1697  0.0  0.0  46128  2172 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd-metadata
+  matias    1700  0.0  0.2 455136  8804 ?        Sl   May15   0:00 /usr/lib/gnome-settings-daemon/gnome-fallback-mount-helper
+  matias    1702  0.0  0.3 507032 12316 ?        Sl   May15   0:00 bluetooth-applet
+  matias    1704  0.0  0.8 919756 35580 ?        Sl   May15   0:06 nautilus -n
+  matias    1705  0.0  0.0  95960  2984 ?        S    May15   0:00 /usr/lib/pulseaudio/pulse/gconf-helper
+  matias    1707  0.0  0.4 582096 16420 ?        Sl   May15   0:00 nm-applet
+  matias    1709  0.0  0.3 426452 14396 ?        Sl   May15   0:00 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+  matias    1720  0.0  0.0  70300  3760 ?        S    May15   0:00 /usr/lib/gvfs/gvfs-gdu-volume-monitor
+  root      1722  0.0  0.0 193368  3936 ?        Sl   May15   0:01 /usr/lib/udisks/udisks-daemon
+  root      1723  0.0  0.0  45520   804 ?        S    May15   0:00 udisks-daemon: not polling any devices
+  matias    1728  0.0  0.0 142084  2520 ?        Sl   May15   0:00 /usr/lib/gvfs/gvfs-afc-volume-monitor
+  matias    1731  0.0  0.0  60340  2480 ?        S    May15   0:00 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+  matias    1738  0.0  0.0  57052  3208 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd-trash --spawner :1.6 /org/gtk/gvfs/exec_spaw/0
+  matias    1743  0.0  0.2 419480 11524 ?        Sl   May15   0:23 /usr/lib/bamf/bamfdaemon
+  matias    1747  0.0  0.0   4404   608 ?        Ss   May15   0:00 /bin/sh -c /usr/bin/compiz-decorator
+  matias    1748  0.0  0.2 320552 11940 ?        Sl   May15   0:13 /usr/bin/gtk-window-decorator
+  matias    1753  0.0  0.0  52412  2624 ?        S    May15   0:00 /usr/lib/gvfs/gvfsd-burn --spawner :1.6 /org/gtk/gvfs/exec_spaw/1
+  matias    1755  0.0  1.1 549944 45044 ?        Sl   May15   0:33 /usr/lib/unity/unity-panel-service
+  matias    1757  0.0  0.2 703768 10584 ?        Sl   May15   0:09 /usr/lib/indicator-appmenu/hud-service
+  matias    1773  0.0  0.1 560876  5064 ?        Sl   May15   0:00 /usr/lib/indicator-application/indicator-application-service
+  matias    1777  0.0  0.2 563084 10160 ?        Sl   May15   0:00 /usr/lib/indicator-printers/indicator-printers-service
+  matias    1778  0.0  0.1 602340  6328 ?        Sl   May15   0:00 /usr/lib/indicator-session/indicator-session-service
+  matias    1779  0.0  0.1 529800  6980 ?        Sl   May15   0:00 /usr/lib/indicator-sound/indicator-sound-service
+  matias    1780  0.0  0.1 565572  7516 ?        Sl   May15   0:00 /usr/lib/indicator-datetime/indicator-datetime-service
+  matias    1781  0.0  0.1 646604  6520 ?        Sl   May15   0:00 /usr/lib/indicator-messages/indicator-messages-service
+  matias    1813  0.0  0.0  47864  2728 ?        S    May15   0:00 /usr/lib/geoclue/geoclue-master
+  matias    1830  0.0  0.1 332928  6476 ?        Sl   May15   0:00 /usr/lib/ubuntu-geoip/ubuntu-geoip-provider
+  matias    1857  0.0  0.3 827724 14004 ?        Sl   May15   0:01 /usr/lib/unity-lens-applications/unity-applications-daemon
+  matias    1859  0.0  0.1 942284  7164 ?        Sl   May15   0:00 /usr/lib/unity-lens-files/unity-files-daemon
+  matias    1861  0.0  0.2 672880  8608 ?        Sl   May15   0:00 /usr/lib/unity-lens-music/unity-music-daemon
+  matias    1863  0.0  0.4 515028 16664 ?        Sl   May15   0:00 /usr/bin/python /usr/lib/unity-lens-video/unity-lens-video
+  matias    1888  0.0  0.1 348244  4972 ?        Sl   May15   0:00 /usr/bin/zeitgeist-daemon
+  matias    1900  0.0  0.2 246092 10032 ?        Sl   May15   0:00 /usr/lib/zeitgeist/zeitgeist-fts
+  matias    1902  0.0  0.1 417764  5892 ?        Sl   May15   0:00 zeitgeist-datahub
+  matias    1910  0.0  0.0  11384   356 ?        S    May15   0:00 /bin/cat
+  matias    1912  0.0  0.0 273932  3440 ?        Sl   May15   0:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+  matias    1921  0.0  0.2 331704  9252 ?        Sl   May15   0:00 /usr/lib/gnome-disk-utility/gdu-notification-daemon
+  matias    1946  0.0  0.1 586416  4360 ?        Sl   May15   0:00 /usr/lib/unity-lens-music/unity-musicstore-daemon
+  matias    1971  0.0  0.6 555260 25388 ?        Sl   May15   0:02 /usr/bin/python /usr/lib/unity-scope-video-remote/unity-scope-video-remote
+  matias    1985  0.0  0.2 429476 11020 ?        Sl   May15   0:00 telepathy-indicator
+  matias    1992  0.0  0.1 321308  6376 ?        Sl   May15   0:00 /usr/lib/telepathy/mission-control-5
+  matias    1997  0.0  0.3 400244 13800 ?        Sl   May15   0:00 /usr/lib/gnome-online-accounts/goa-daemon
+  matias    2014  0.0  0.2 314804 10304 ?        Sl   May15   0:06 gnome-screensaver
+  matias    2035  0.0  0.3 407452 13288 ?        Sl   May15   0:02 update-notifier
+  matias    2074  0.0  0.0 289456  3968 ?        Sl   May15   0:01 /usr/lib/deja-dup/deja-dup/deja-dup-monitor
+  root      2350  0.0  0.3  95416 12344 ?        S    May15   0:00 /usr/bin/python /usr/lib/system-service/system-service-d
+  matias    2370  0.0  0.0 262092  2656 ?        Sl   May15   0:00 /usr/lib/dconf/dconf-service
+  matias    3494  0.0  0.6 497476 25268 ?        Sl   15:56   0:00 gedit
+  root      4057  0.0  0.0      0     0 ?        S    16:03   0:00 [kworker/1:0]
+  matias    6641  0.0  0.8 106888 34108 pts/1    Sl+  16:37   0:00 /home/matias/.rvm/rubies/ruby-2.0.0-p451/bin/rake                           
+  root      8591  0.0  0.0      0     0 ?        S    16:51   0:00 [kworker/0:0]
+  root      9797  0.0  0.0      0     0 ?        S    17:00   0:00 [kworker/0:2]
+  root     10391  0.0  0.0      0     0 ?        S    17:05   0:00 [kworker/0:1]
+  matias   10440  0.0  0.0      0     0 ?        Z    17:05   0:00 [git] <defunct>
+  matias   10444  0.0  0.0  22360  1264 pts/0    R+   17:05   0:00 ps aux
+  lp       21996  0.0  0.0  52148  1696 ?        S    07:40   0:00 /usr/lib/cups/notifier/dbus dbus:// 
+  root     22136  0.0  0.0      0     0 ?        S    09:28   0:00 [flush-8:0]
+  root     22139  0.0  0.0      0     0 ?        S    09:33   0:08 [kworker/1:2]
+  matias   22322  5.7 19.1 1527552 774956 ?      Rl   09:35  25:53 /usr/lib/firefox/firefox
+  matias   22376  1.3  2.4 2655096 99720 ?       Sl   09:36   6:04 /opt/sublime_text/sublime_text
+  matias   22392  0.2  0.8 350696 32836 ?        Sl   09:36   1:07 /opt/sublime_text/plugin_host 22376
+  matias   22576  0.0  0.0   4404   612 ?        Ss   09:42   0:00 /bin/sh -c gnome-terminal
+  matias   22577  0.1  0.6 555572 24416 ?        Rl   09:42   0:39 gnome-terminal
+  matias   22586  0.0  0.0  14792   840 ?        S    09:42   0:00 gnome-pty-helper
+  matias   22803 11.9  0.8 513268 33792 ?        Sl   09:43  52:47 gnome-system-monitor
+  matias   22903  0.0  0.2  34164 11360 pts/1    Ss   09:46   0:00 -bash
+  matias   23542  0.0  0.2  34216 11408 pts/0    Ss   10:24   0:01 -bash
+  root     25129  0.0  0.0  50040  2932 ?        Ss   10:46   0:00 /usr/sbin/sshd -D
+  matias   27949  0.4  1.1 452060 47676 ?        Sl   11:48   1:25 /usr/lib/firefox/plugin-container /usr/lib/flashplugin-installer/libflashplay
+  root     28381  0.0  0.0  26564   540 ?        S    11:55   0:00 dbus-launch --autolaunch=31627581c457d548441745e800000005 --binary-syntax --c
+  root     28382  0.0  0.0  23820   692 ?        Ss   11:55   0:00 //bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+
+"ls /proc": "1\n10\n10391\n1099\n11\n11117\n1114\n11204\n1139\n12\n1252\n13\n1375\n1389\n14\n1415\n1431\n1453\n15\n16\n1606\n1617\n1652\n1655\n1656\n1666\n1674\n1676\n1683\n1686\n1695\n1697\n17\n1700\n1702\n1704\n1705\n1707\n1709\n1720\n1722\n1723\n1728\n1731\n1738\n1743\n1747\n1748\n1753\n1755\n1757\n1773\n1777\n1778\n1779\n1780\n1781\n18\n1813\n1830\n1857\n1859\n1861\n1863\n1888\n19\n1900\n1902\n1910\n1912\n1921\n1946\n1971\n1985\n1992\n1997\n2\n20\n2014\n2035\n2074\n21\n21996\n22\n22136\n22139\n22322\n22376\n22392\n22576\n22577\n22586\n22803\n22903\n23\n2350\n23542\n2370\n246\n247\n25129\n26\n27\n27949\n28\n28381\n28382\n29\n3\n30\n31\n32\n336\n338\n3494\n4057\n41\n43\n44\n46\n47\n48\n50\n514\n515\n6\n6641\n7\n70\n707\n71\n72\n723\n727\n761\n762\n775\n777\n781\n787\n791\n793\n796\n8\n818\n8591\n879\n886\n906\n911\n919\n933\n938\n939\n942\n959\n960\n971\nacpi\nasound\nbuddyinfo\nbus\ncgroups\ncmdline\nconsoles\ncpuinfo\ncrypto\ndevices\ndiskstats\ndma\ndri\ndriver\nexecdomains\nfb\nfilesystems\nfs\ninterrupts\niomem\nioports\nirq\nkallsyms\nkcore\nkey-users\nkmsg\nkpagecount\nkpageflags\nlatency_stats\nloadavg\nlocks\nmdstat\nmeminfo\nmisc\nmodules\nmounts\nmtrr\nnet\npagetypeinfo\npartitions\nsched_debug\nschedstat\nscsi\nself\nslabinfo\nsoftirqs\nstat\nswaps\nsys\nsysrq-trigger\nsysvipc\ntimer_list\ntimer_stats\ntty\nuptime\nversion\nversion_signature\nvmallocinfo\nvmstat\nzoneinfo"
+

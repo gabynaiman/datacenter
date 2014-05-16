@@ -1,0 +1,3 @@
+module Datacenter
+  VERSION = "0.0.1"
+end
