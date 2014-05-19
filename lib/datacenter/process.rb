@@ -3,7 +3,6 @@ module Datacenter
 
     ATTRIBUTES = [
       :command, 
-      :name, 
       :status, 
       :memory, 
       :virtual_memory,
@@ -12,14 +11,23 @@ module Datacenter
     ]
 
     attr_reader :pid
+    attr_reader :machine
 
-    def initialize(pid, shell=nil)
+    def initialize(pid, machine=nil)
       @pid = pid
-      @shell = shell || Shell::Localhost.new
+      @machine = machine
     end
 
     def alive?
-      !(shell.run 'ls /proc').scan("\n#{pid}\n").empty?
+      !(machine.shell.run 'ls /proc').scan("\n#{pid}\n").empty?
+    end
+
+    def mem_usage
+      info[:pmem]
+    end
+
+    def cpu_usage
+      info[:pcpu]
     end
 
     ATTRIBUTES.each do |attribute|
@@ -30,29 +38,18 @@ module Datacenter
 
     private
 
-    attr_reader :shell
-
     def info
       Hash.new.tap do |info|
-        info[:command] = proc_file(:cmdline).tr("\000", ' ').strip
-
-        status = Hash[proc_file(:status).split("\n").map{ |s| s.split(':').map(&:strip) }]
-
-        info[:name] = status['Name']
-        info[:status] = status['State']
-        info[:memory] = status['VmRSS'].to_i / 1024.0
-        info[:virtual_memory] = status['VmSize'].to_i / 1024.0
-        info[:cpu] = shell.run('ps aux').scan(/#{pid}.*/)[0].split[2]
-        info[:user] = shell.run('ps aux').scan(/.*#{pid}.*/)[0].split[0]
+        ps = machine.shell.run('ps aux').scan(/.*#{pid}.*/)[0].split
+        info[:user] = ps[0]
+        info[:pid]  = ps[1]
+        info[:pcpu] = ps[2].to_f
+        info[:pmem] = ps[3].to_f
+        info[:virtual_memory] = ps[4].to_i / 1024.0
+        info[:memory] = ps[5].to_i / 1024.0
+        info[:status] = ps[7]
+        info[:command] = ps[10]
       end
-    end
-
-    def proc_dir
-      "/proc/#{pid}"
-    end
-
-    def proc_file(file)
-      shell.run "cat #{File.join(proc_dir, file.to_s)}"
     end
   end
 end

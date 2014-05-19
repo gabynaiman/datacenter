@@ -1,6 +1,8 @@
 module Datacenter
   class Machine
 
+    attr_reader :shell
+
     def initialize(shell=nil)
       @shell = shell || Shell::Localhost.new
     end
@@ -47,44 +49,57 @@ module Datacenter
       swap - swap_free
     end
 
-    def disk_size
-      diskinfo[:size] / 1024.0
-    end
-
-    def disk_used
-      diskinfo[:used] / 1024.0
-    end
-
-    def disk_available
-      diskinfo[:available] / 1024.0
+    def disk_partition
+      Array.new.tap do |partition_list|
+        partitions.each do |p|
+          partition_list << (DiskPartition.new p)
+        end
+      end
     end
 
     def processes
       shell.run('ps aux').split("\n")[1..-1].map { |line| line.split }
-                                           .map { |l| Datacenter::Process.new l[1],shell }
+                                            .map { |l| Datacenter::Process.new l[1],self }
     end
 
     def top(order)
       mappings = { memory:'rss', pid:'pid', cpu: '%cpu' }
       shell.run("ps aux --sort -#{mappings[order]}").split("\n")[1..-1].map { |line| line.split }
-                                                        .map { |l| Datacenter::Process.new l[1],shell }
+                                                        .map { |l| Datacenter::Process.new l[1],self }
     end 
 
-    private
+    private    
 
-    attr_reader :shell
+    def partitions
+      df = shell.run('df -lT').scan(/\/dev\/sd.*/).map { |e| e.split }
+      Array.new.tap do |partition_list|
+        df.each do |linea|
+          p = {} 
+          i = 0
+          p[:filesystem]  = linea[i]
+          p[:type]        = linea[i+=1]
+          p[:size]        = linea[i+=1].to_i / 1024.0
+          p[:used]        = linea[i+=1].to_i / 1024.0
+          p[:available]   = linea[i+=1].to_i / 1024.0
+          p[:p_use]       = linea[i+=1].to_f
+          p[:mounted]     = linea[i+=1]
+          partition_list << p        
+        end
+      end
+    end
 
     def meminfo
       Hash[shell.run('cat /proc/meminfo').split("\n").map { |e| e.split(':').map(&:strip) }]
     end
 
-    def diskinfo
-      info = shell.run('df -l').split("\n")
-                                .map {|e| e.split}
-                                .find {|s| s[5]=="\/"};
-      
-      Hash[{size: info[1].to_f, used: info[2].to_f, available: info[3].to_f}]
-    end
+    class DiskPartition
+      attr_reader :filesystem, :type, :size, :used, :available, :p_use, :mounted
 
+      def initialize(attributes)
+        attributes.each do |name, value|
+          instance_variable_set "@#{name}", value if respond_to? name
+        end
+      end
+    end
   end
 end
