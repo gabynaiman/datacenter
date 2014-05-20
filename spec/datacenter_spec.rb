@@ -38,6 +38,8 @@ describe Datacenter do
         machine.os.version.must_equal '12.04'
       end
 
+      it ('CPU') { machine.cpu.must_equal 'Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz'}
+
       it ('Cores') { machine.cores.must_equal 2 }
 
       it ('Total Memory') { machine.memory.must_equal 3944.953125 }

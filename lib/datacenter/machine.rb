@@ -20,6 +20,10 @@ module Datacenter
     def os
       @os ||= OS.new shell
     end
+    
+    def cpu
+      cpuinfo['model name']
+    end
 
     def cores
       shell.run('nproc').to_i
@@ -90,6 +94,10 @@ module Datacenter
 
     def meminfo
       Hash[shell.run('cat /proc/meminfo').split("\n").map { |e| e.split(':').map(&:strip) }]
+    end
+
+    def cpuinfo
+      Hash[shell.run('cat /proc/cpuinfo').split("\n").select {|e| e.length>0}.map { |e| e.split(':').map(&:strip) }]
     end
 
     class DiskPartition

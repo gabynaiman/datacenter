@@ -60,32 +60,21 @@ ifconfig: |
   SwapTotal:       4183036 kB
   SwapFree:        4183036 kB
   Dirty:               356 kB
-  Writeback:             0 kB
-  AnonPages:       1087328 kB
-  Mapped:           140848 kB
-  Shmem:            342824 kB
-  Slab:             113380 kB
-  SReclaimable:      90760 kB
-  SUnreclaim:        22620 kB
-  KernelStack:        3088 kB
-  PageTables:        27164 kB
-  NFS_Unstable:          0 kB
-  Bounce:                0 kB
-  WritebackTmp:          0 kB
-  CommitLimit:     6202852 kB
-  Committed_AS:    3903568 kB
-  VmallocTotal:   34359738367 kB
-  VmallocUsed:      352252 kB
-  VmallocChunk:   34359379363 kB
-  HardwareCorrupted:     0 kB
-  AnonHugePages:         0 kB
-  HugePages_Total:       0
-  HugePages_Free:        0
-  HugePages_Rsvd:        0
-  HugePages_Surp:        0
-  Hugepagesize:       2048 kB
-  DirectMap4k:       49728 kB
-  DirectMap2M:     4134912 kB
+
+"cat /proc/cpuinfo": |
+  processor : 0
+  vendor_id : GenuineIntel
+  cpu family  : 6
+  model   : 23
+  model name  : Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz
+  stepping  : 10
+  microcode : 0xa07
+  cpu MHz   : 2926.000
+  cache size  : 3072 KB
+  physical id : 0
+  siblings  : 2
+  core id   : 0
+
 
 "ps aux --sort -rss": |
   USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
