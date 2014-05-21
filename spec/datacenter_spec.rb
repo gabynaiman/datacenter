@@ -87,6 +87,8 @@ describe Datacenter do
         process.alive?.must_equal false
       end
 
+      it ('Name') { process.name.must_equal 'gnome-system-mo' }
+      
       it ('Command') { process.command.must_equal 'gnome-system-monitor' }
 
       it ('Memory') { process.memory.must_equal 33.0 }

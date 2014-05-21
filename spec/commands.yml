@@ -119,6 +119,31 @@ ifconfig: |
   root         7  0.0  0.0      0     0 ?        S    May15   0:00 [watchdog/0]
   root         8  0.0  0.0      0     0 ?        S    May15   0:00 [migration/1] 
   matias   22803 11.9  0.8 513268 33792 ?        Sl   09:43  52:47 gnome-system-monitor
-  
+
+"cat /proc/22803/status": |
+  Name: gnome-system-mo
+  State:  S (sleeping)
+  Tgid: 22803
+  Pid:  22803
+  PPid: 1
+  TracerPid:  0
+  Uid:  1000  1000  1000  1000
+  Gid:  1000  1000  1000  1000
+  FDSize: 64
+  Groups: 4 24 27 30 46 109 124 1000 
+  VmPeak:   608584 kB
+  VmSize:   512088 kB
+  VmLck:         0 kB
+  VmPin:         0 kB
+  VmHWM:     32632 kB
+  VmRSS:     32632 kB
+  VmData:   302676 kB
+  VmStk:       136 kB
+  VmExe:       264 kB
+  VmLib:     27732 kB
+  VmPTE:       556 kB
+  VmSwap:        0 kB
+  Threads:  4
+
 "ls /proc": "18\n1813\n22803\n22903\n23\n2350\n23542\n2370\n246\n247\n25129\ntimer_list\nvmstat\nzoneinfo"
 
