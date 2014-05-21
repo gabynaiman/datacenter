@@ -1,4 +1,5 @@
-require_relative 'lib/datacenter.rb'
+require_relative 'lib/datacenter.rb'	
+
 require 'hirb'
 extend Hirb::Console
 
@@ -34,6 +35,7 @@ puts "\n\nDetailed Information \n\n"
 
 puts 'Operating System'
 os_fields = [:name, :distribution, :platform, :kernel, :version]
+# Hirb::Helpers::Table.render(machine.os, :fields=>os_fields)
 table machine.os, :fields=>os_fields
 
 puts 'Hardware'
@@ -75,21 +77,21 @@ mem[:swap_free] = "#{machine.swap_free.to_i} MB"
 mem[:swap_used] = "#{machine.swap_used.to_i} MB"
 puts Hirb::Helpers::Table.render [mem], :fields=>mem_fields
 
-# TODO: No funciona el menú
-# class InfoMachineType
-# 	attr_reader :description
+# TODO: Funciona el menú, falta la info detallada
+class InfoMachineType
+	attr_reader :description
 
-# 	def initialize(description, detail)
-# 		@description = description
-# 		@detail = detail
-# 	end
+	def initialize(description, detail)
+		@description = description
+		@detail = detail
+	end
 	
-# 	def detail
-# 	 	Hirb::Helpers::Tree.render(@detail)
-# 	end	
-# end
+	def detail
+	 	Hirb::Helpers::Tree.render(@detail)
+	end	
+end
 
-# type_gen = InfoMachineType.new 'Informacion General', info_machine
-# type_det = InfoMachineType.new 'Info Detallada', 'Muestra info detallada'
+type_gen = InfoMachineType.new 'Informacion General', info_machine
+type_det = InfoMachineType.new 'Info Detallada', info_machine
 
-# menu [type_gen, type_det], :prompt=> "Elegir opción: ", :fields => [:description], :default_field=>:detail, :two_d=>true
+puts menu [type_gen, type_det], :prompt=> "Elegir opción: ", :fields => [:description], :default_field=>:detail, :two_d=>true
