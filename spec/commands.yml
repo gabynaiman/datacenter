@@ -76,7 +76,7 @@ ifconfig: |
   core id   : 0
 
 
-"ps aux --sort -rss": |
+"ps aux --sort -rss | head -n 11": |
   USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
   matias   22322  5.2 21.5 1531844 872460 ?      Sl   09:35  20:53 /usr/lib/firefox/firefox
   matias    1683  0.5  2.4 1371260 99364 ?       Sl   May15  10:17 compiz
@@ -90,7 +90,7 @@ ifconfig: |
   matias    1971  0.0  0.6 554976 25388 ?        Sl   May15   0:02 /usr/bin/python /usr/lib/unity-scope-video-remote/unity-scope-video-remote
   matias    3494  0.0  0.6 497476 25268 ?        Sl   15:56   0:00 gedit
 
-"ps aux --sort -%cpu" : |
+"ps aux --sort -%cpu | head -n 11" : |
   USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
   matias   22803 11.7  0.8 512088 32632 ?        Sl   09:43  45:54 gnome-system-monitor
   matias   22322  5.2 19.8 1490884 802188 ?      Sl   09:35  20:57 /usr/lib/firefox/firefox
@@ -101,7 +101,7 @@ ifconfig: |
   matias   22392  0.2  0.7 350564 31944 ?        Sl   09:36   0:50 /opt/sublime_text/plugin_host 22376
   matias   22577  0.1  0.5 555828 24124 ?        Sl   09:42   0:33 gnome-terminal
 
-"ps aux --sort -pid": |
+"ps aux --sort -pid | head -n 11": |
   USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
   root     28382  0.0  0.0  23820   692 ?        Ss   11:55   0:00 //bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
   root     28381  0.0  0.0  26564   540 ?        S    11:55   0:00 dbus-launch --autolaunch=31627581c457d548441745e800000005 --binary-syntax --c
@@ -119,6 +119,9 @@ ifconfig: |
   root         7  0.0  0.0      0     0 ?        S    May15   0:00 [watchdog/0]
   root         8  0.0  0.0      0     0 ?        S    May15   0:00 [migration/1] 
   matias   22803 11.9  0.8 513268 33792 ?        Sl   09:43  52:47 gnome-system-monitor
+
+ps aux | grep gnome-system-monitor | grep -v grep: |
+  matias   22803  7.2  0.8 597980 34948 ?        Sl   May21 136:34 gnome-system-monitor
 
 "cat /proc/22803/status": |
   Name: gnome-system-mo

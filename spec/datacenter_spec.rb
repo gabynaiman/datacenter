@@ -55,6 +55,8 @@ describe Datacenter do
       it ('Used Swap') { machine.swap_used.must_equal 0.0}
 
       it ('List of Proccess') { machine.processes.find {|p| p.pid=="22803"}.command.must_equal 'gnome-system-monitor' }
+      
+      it ('List of Proccess With Filter') { machine.processes('gnome-system-monitor').find {|p| p.pid=="22803"}.name.must_equal 'gnome-system-mo' }
 
       it ('Top by Memory') { machine.top(:memory)[7].command.must_equal 'gnome-system-monitor' }
 
