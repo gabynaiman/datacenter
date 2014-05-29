@@ -14,7 +14,7 @@ module Datacenter
     end
 
     def name
-      (shell.run 'hostname').strip
+      shell.run('hostname').strip
     end
 
     def os
@@ -53,50 +53,47 @@ module Datacenter
       swap - swap_free
     end
 
-    def disk_partition
-      Array.new.tap do |partition_list|
-        partitions.each do |p|
-          partition_list << (DiskPartition.new p)
-        end
-      end
+    def disk_partitions
+      partitions.map { |p| DiskPartition.new p }
     end
 
-    def processes(filtro="")
-      if filtro.empty?
+    def processes(filter='')
+      if filter.empty?
         command = 'ps aux'
         start = 1
       else
-        command = "ps aux | grep #{filtro} | grep -v grep"
+        command = "ps aux | grep #{filter} | grep -v grep"
         start =  0
       end
-      shell.run(command).split("\n")[start..-1].map { |line| line.split }
-                                               .map { |l| Datacenter::Process.new l[1],self }
+      shell.run(command)
+           .split("\n")[start..-1]
+           .map { |l| Datacenter::Process.new l.split[1], self }
     end
 
     def top(order,n=10)
-      mappings = { memory:'rss', pid:'pid', cpu: '%cpu' }
-      shell.run("ps aux --sort -#{mappings[order]} | head -n #{n+1}").split("\n")[1..-1].map { |line| line.split }
-                                                        .map { |l| Datacenter::Process.new l[1],self }
+      mappings = { memory: 'rss', pid: 'pid', cpu: '%cpu' }
+      shell.run("ps aux --sort -#{mappings[order]} | head -n #{n+1}")
+           .split("\n")[1..-1]
+           .map { |l| Datacenter::Process.new l.split[1], self }
     end
 
     private    
 
     def partitions
-      df = shell.run('df -lT').scan(/\/dev\/sd.*/).map { |e| e.split }
-      Array.new.tap do |partition_list|
-        df.each do |linea|
-          p = {} 
-          i = 0
-          p[:filesystem]  = linea[i]
-          p[:type]        = linea[i+=1]
-          p[:size]        = linea[i+=1].to_i / 1024.0
-          p[:used]        = linea[i+=1].to_i / 1024.0
-          p[:available]   = linea[i+=1].to_i / 1024.0
-          p[:p_use]       = linea[i+=1].to_f
-          p[:mounted]     = linea[i+=1]
-          partition_list << p        
-        end
-      end
+      shell.run('df -lT')
+           .scan(/^\/dev.*/)
+           .map do |p|
+             line = p.split
+             {
+               filesystem:      line[0],
+               type:            line[1],
+               size:            line[2].to_f / 1024,
+               used:            line[3].to_f / 1024,
+               available:       line[4].to_f / 1024,
+               used_percentage: line[5].to_f,
+               mounted:         line[6]
+             }
+           end
     end
 
     def meminfo
@@ -108,7 +105,7 @@ module Datacenter
     end
 
     class DiskPartition
-      attr_reader :filesystem, :type, :size, :used, :available, :p_use, :mounted
+      attr_reader :filesystem, :type, :size, :used, :available, :used_percentage, :mounted
 
       def initialize(attributes)
         attributes.each do |name, value|

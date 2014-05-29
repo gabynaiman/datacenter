@@ -6,7 +6,7 @@ describe Datacenter do
 
   describe Datacenter::OS do
 
-    let(:shell) { Datacenter::Shell::Mock.new  COMMANDS_FILE }
+    let(:shell) { Datacenter::Shell::Mock.new COMMANDS_FILE }
     let(:os) { Datacenter::OS.new shell }
 
     it ('Name') { os.name.must_equal 'GNU/Linux' }
@@ -63,14 +63,22 @@ describe Datacenter do
       it ('Top by CPU') { machine.top(:cpu)[0].command.must_equal 'gnome-system-monitor' }
 
       describe 'Disk Paritions' do
-        it ('Size') { machine.disk_partition.map(&:size).must_equal [296432.3671875,286580.5556640625] }   
-        it ('Available') { machine.disk_partition.map(&:available).must_equal [276762.1953125,203569.6171875] }   
-        it ('Used') { machine.disk_partition.map(&:used).must_equal [4612.2734375,3864.20703125] }   
-        it ('%Use') { machine.disk_partition.map(&:p_use).must_equal [2,15] }          
-        it ('Filesystem') { machine.disk_partition.map(&:filesystem).must_equal ["/dev/sda1","/dev/sdb1"] }   
-        it ('Type') { machine.disk_partition.map(&:type).must_equal ["ext4","ext4"] }   
-        it ('Mounted on') { machine.disk_partition.map(&:mounted).must_equal ["/","/sys"] }   
+      
+        it ('Size') { machine.disk_partitions.map(&:size).must_equal [296432.3671875, 286580.5556640625] }   
+      
+        it ('Available') { machine.disk_partitions.map(&:available).must_equal [276762.1953125, 203569.6171875] }   
+      
+        it ('Used') { machine.disk_partitions.map(&:used).must_equal [4612.2734375, 3864.20703125] }   
+      
+        it ('% Use') { machine.disk_partitions.map(&:used_percentage).must_equal [2, 15] }
+      
+        it ('Filesystem') { machine.disk_partitions.map(&:filesystem).must_equal ["/dev/sda1", "/dev/sdb1"] }
+      
+        it ('Type') { machine.disk_partitions.map(&:type).must_equal ["ext4", "ext4"] }
+      
+        it ('Mounted on') { machine.disk_partitions.map(&:mounted).must_equal ["/", "/sys"] }   
       end
+
     end
 
     describe Datacenter::Process do

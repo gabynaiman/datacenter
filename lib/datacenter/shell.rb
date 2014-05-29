@@ -32,6 +32,13 @@ module Datacenter
           @session = nil
         end
       end
+
+      def self.open(*args, &block)
+        shell = new *args
+        shell.open
+        block.call shell
+        shell.close
+      end
     end
 
   end
