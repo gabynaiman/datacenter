@@ -3,6 +3,7 @@ require 'minitest/autorun'
 require 'turn'
 require 'yaml'
 require 'datacenter'
+require 'pry-nav'
 
 Turn.config do |c|
   c.format = :pretty
@@ -33,4 +34,8 @@ module Datacenter
 
     end
   end
+end
+
+class Minitest::Spec
+  let(:mock_shell) { Datacenter::Shell::Mock.new File.expand_path('../commands.yml', __FILE__) }
 end

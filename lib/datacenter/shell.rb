@@ -8,22 +8,22 @@ module Datacenter
     end
 
     class Ssh
-      attr_reader :ssh_args
+      attr_reader :options
 
       def initialize(*args)
-        @ssh_args = args
+        @options = args
       end
 
       def run(command)
         if @session
           @session.exec!(command).strip
         else
-          Net::SSH.start(*@ssh_args) { |ssh| ssh.exec! command }.strip
+          Net::SSH.start(*options) { |ssh| ssh.exec! command }.strip
         end
       end
 
       def open
-        @session = Net::SSH.start *@ssh_args unless @session
+        @session = Net::SSH.start *options unless @session
       end
 
       def close

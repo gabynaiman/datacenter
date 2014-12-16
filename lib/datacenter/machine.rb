@@ -62,16 +62,16 @@ module Datacenter
         command = 'ps aux'
         start = 1
       else
-        command = "ps aux | grep #{filter} | grep -v grep"
+        command = "ps aux | grep \"#{filter}\" | grep -v grep"
         start =  0
       end
       shell.run(command)
            .split("\n")[start..-1]
-           .map { |l| Datacenter::Process.new l.split[1], self }
+           .map { |l| Datacenter::Process.new l.split[1].to_i, self }
     end
 
-    def top(order,n=10)
-      mappings = { memory: 'rss', pid: 'pid', cpu: '%cpu' }
+    def top(order, n=10)
+      mappings = {memory: 'rss', pid: 'pid', cpu: '%cpu'}
       shell.run("ps aux --sort -#{mappings[order]} | head -n #{n+1}")
            .split("\n")[1..-1]
            .map { |l| Datacenter::Process.new l.split[1], self }

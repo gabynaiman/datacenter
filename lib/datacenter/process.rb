@@ -19,12 +19,27 @@ module Datacenter
 
     def initialize(pid, machine=nil)
       @pid = pid
-      @machine = machine
-      @cache = {:fetched=>0, :content=>[]}      
+      @machine = machine || Machine.new
+      @cache = {fetched: 0, content: []}      
     end
 
     def alive?
       !(machine.shell.run 'ls /proc').scan("\n#{pid}\n").empty?
+    end
+
+    def send_signal(signal)
+      ::Process.kill signal, pid
+    rescue Errno::ESRCH
+      nil
+    end
+
+    def stop
+      send_signal :TERM
+    end
+
+    def kill
+      send_signal :KILL
+      while alive?; end
     end
 
     ATTRIBUTES.each do |attribute|
@@ -48,8 +63,8 @@ module Datacenter
           info[:virtual_memory] = ps[4].to_i / 1024.0
           info[:memory] = ps[5].to_i / 1024.0
           info[:status] = ps[7] 
-          info[:command] = ps[10..-1].reduce {|acum,e| "#{acum} #{e}"}
-          @cache = {:fetched => Time.now, :content=>info}
+          info[:command] = ps[10..-1].reduce { |acum,e| "#{acum} #{e}" }
+          @cache = {fetched: Time.now, content: info}
         end
       else
         cache[:content]
@@ -63,5 +78,6 @@ module Datacenter
     def proc_file(file)
       machine.shell.run "cat #{File.join(proc_dir, file.to_s)}"
     end
+
   end
 end

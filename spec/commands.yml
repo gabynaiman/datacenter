@@ -147,6 +147,3 @@ ps aux | grep gnome-system-monitor | grep -v grep: |
   VmPTE:       556 kB
   VmSwap:        0 kB
   Threads:  4
-
-"ls /proc": "18\n1813\n22803\n22903\n23\n2350\n23542\n2370\n246\n247\n25129\ntimer_list\nvmstat\nzoneinfo"
-
