@@ -3,14 +3,17 @@ require 'minitest_helper'
 describe Datacenter::Process do
 
   let(:pid) { 22803 }
-  let(:machine) { Datacenter::Machine.new mock_shell }
-  let(:process) { Datacenter::Process.new pid, machine }
+  let(:process) { Datacenter::Process.new pid, mock_shell }
 
   it ('Pid') { process.pid.must_equal pid }
 
   it ('Alive') { process.must_be :alive? }
 
-  it ('Dead') { Datacenter::Process.new(-pid, machine).wont_be :alive? }
+  it ('Dead') { Datacenter::Process.new(-pid, mock_shell).wont_be :alive? }
+
+  it ('Stop') { process.stop }
+
+  it ('Kill') { Datacenter::Process.new(pid, Datacenter::Shell::Kill.new(pid)).kill }
 
   it ('Name') { process.name.must_equal 'gnome-system-mo' }
   

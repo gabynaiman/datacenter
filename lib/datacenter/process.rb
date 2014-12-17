@@ -15,11 +15,11 @@ module Datacenter
 
     EXPIRATION_TIME = 2
 
-    attr_reader :pid, :machine
+    attr_reader :pid
 
-    def initialize(pid, machine=nil)
+    def initialize(pid, shell=nil)
       @pid = pid
-      @machine = machine || Machine.new
+      @shell = shell || Shell::Local.new
       @cache = Cache.new EXPIRATION_TIME
     end
 
@@ -37,7 +37,7 @@ module Datacenter
     end
 
     def send_signal(signal)
-      out = machine.shell.run("kill -s #{signal} #{pid}")
+      out = shell.run("kill -s #{signal} #{pid}")
       raise Errno::ESRCH, pid.to_s if out.match 'No such process'
     end
 
@@ -52,9 +52,11 @@ module Datacenter
 
     private
 
+    attr_reader :shell
+
     def info
       @cache.fetch(:info) do
-        ps = machine.shell.run('ps aux').scan(/.*#{pid}.*/)[0].split
+        ps = shell.run('ps aux').scan(/.*#{pid}.*/)[0].split
         Hash.new.tap do |info|
           status = Hash[proc_file(:status).split("\n").map{ |s| s.split(':').map(&:strip) }]
           info[:name] = status['Name']
@@ -72,7 +74,7 @@ module Datacenter
 
     def proc_file(name)
       filename = File.join '/proc', pid.to_s, name.to_s
-      machine.shell.run "cat #{filename}"
+      shell.run "cat #{filename}"
     end
 
   end

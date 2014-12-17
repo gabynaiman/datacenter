@@ -67,14 +67,14 @@ module Datacenter
       end
       shell.run(command)
            .split("\n")[start..-1]
-           .map { |l| Process.new l.split[1].to_i, self }
+           .map { |l| Process.new l.split[1].to_i, shell }
     end
 
     def top(order, n=10)
       mappings = {memory: 'rss', pid: 'pid', cpu: '%cpu'}
       shell.run("ps aux --sort -#{mappings[order]} | head -n #{n+1}")
            .split("\n")[1..-1]
-           .map { |l| Process.new l.split[1], self }
+           .map { |l| Process.new l.split[1], shell }
     end
 
     private    

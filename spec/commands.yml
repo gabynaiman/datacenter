@@ -2,6 +2,8 @@
 
 "kill -s 0 -22803": "bash: kill: (-22803) - No such process"
 
+"kill -s TERM 22803": ""
+
 "uname -i": x86_64
 
 "uname -r": 3.5.0-49-generic
