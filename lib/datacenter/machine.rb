@@ -67,14 +67,14 @@ module Datacenter
       end
       shell.run(command)
            .split("\n")[start..-1]
-           .map { |l| Datacenter::Process.new l.split[1].to_i, self }
+           .map { |l| Process.new l.split[1].to_i, self }
     end
 
     def top(order, n=10)
       mappings = {memory: 'rss', pid: 'pid', cpu: '%cpu'}
       shell.run("ps aux --sort -#{mappings[order]} | head -n #{n+1}")
            .split("\n")[1..-1]
-           .map { |l| Datacenter::Process.new l.split[1], self }
+           .map { |l| Process.new l.split[1], self }
     end
 
     private    
@@ -101,7 +101,7 @@ module Datacenter
     end
 
     def cpuinfo
-      Hash[shell.run('cat /proc/cpuinfo').split("\n").select {|e| e.length>0}.map { |e| e.split(':').map(&:strip) }]
+      Hash[shell.run('cat /proc/cpuinfo').split("\n").select { |e| e.length > 0 }.map { |e| e.split(':').map(&:strip) }]
     end
 
     class DiskPartition
