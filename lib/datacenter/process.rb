@@ -13,14 +13,20 @@ module Datacenter
       :mem_usage
     ]
 
-    TIME_CACHE = 2
+    EXPIRATION_TIME = 2
 
-    attr_reader :pid, :machine, :cache
+    attr_reader :pid, :machine
 
     def initialize(pid, machine=nil)
       @pid = pid
       @machine = machine || Machine.new
-      @cache = {fetched: 0, content: []}      
+      @cache = Cache.new EXPIRATION_TIME
+    end
+
+    ATTRIBUTES.each do |attribute|
+      define_method attribute do
+        info[attribute]
+      end
     end
 
     def alive?
@@ -44,16 +50,10 @@ module Datacenter
       while alive?; end
     end
 
-    ATTRIBUTES.each do |attribute|
-      define_method attribute do
-        info[attribute]
-      end
-    end
-
     private
 
     def info
-      if cache[:content].empty? || (Time.now - cache[:fetched] > TIME_CACHE)
+      @cache.fetch(:info) do
         ps = machine.shell.run('ps aux').scan(/.*#{pid}.*/)[0].split
         Hash.new.tap do |info|
           status = Hash[proc_file(:status).split("\n").map{ |s| s.split(':').map(&:strip) }]
@@ -66,19 +66,13 @@ module Datacenter
           info[:memory] = ps[5].to_i / 1024.0
           info[:status] = ps[7] 
           info[:command] = ps[10..-1].reduce { |acum,e| "#{acum} #{e}" }
-          @cache = {fetched: Time.now, content: info}
         end
-      else
-        cache[:content]
-      end      
+      end
     end
 
-    def proc_dir
-      "/proc/#{pid}"
-    end
-
-    def proc_file(file)
-      machine.shell.run "cat #{File.join(proc_dir, file.to_s)}"
+    def proc_file(name)
+      filename = File.join '/proc', pid.to_s, name.to_s
+      machine.shell.run "cat #{filename}"
     end
 
   end
