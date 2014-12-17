@@ -6,5 +6,5 @@ rvm:
   - jruby
 before_install:
   - sudo apt-get -y install openssh-server
-  - ssh-keygen -t rsa
+  - ssh-keygen -q -t rsa -N "" -f ~/.ssh/id_rsa
   - cp $HOME/.ssh/id_rsa.pub $HOME/.ssh/authorized_keys
