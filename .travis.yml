@@ -6,3 +6,4 @@ rvm:
   - jruby
 before_install:
   - sudo apt-get -y install openssh-server
+  - cp $HOME/.ssh/id_rsa.pub $HOME/.ssh/authorized_keys
