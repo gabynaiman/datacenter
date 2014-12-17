@@ -30,7 +30,7 @@ module Datacenter
 
     def expired?(key)
       return false unless @expiration_time
-      Time.now > @data[key][:fetched_at] + @expiration_time
+      Time.now >= @data[key][:fetched_at] + @expiration_time
     end
 
   end
