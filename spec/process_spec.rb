@@ -8,12 +8,9 @@ describe Datacenter::Process do
 
   it ('Pid') { process.pid.must_equal pid }
 
-  it ('Alive') { process.alive?.must_equal true }
+  it ('Alive') { process.must_be :alive? }
 
-  it 'Dead' do
-    process = Datacenter::Process.new -123
-    process.wont_be :alive?
-  end
+  it ('Dead') { Datacenter::Process.new(-pid, machine).wont_be :alive? }
 
   it ('Name') { process.name.must_equal 'gnome-system-mo' }
   

@@ -24,21 +24,23 @@ module Datacenter
     end
 
     def alive?
-      !(machine.shell.run 'ls /proc').scan("\n#{pid}\n").empty?
+      send_signal 0
+      true
+    rescue Errno::ESRCH
+      false
     end
 
     def send_signal(signal)
-      ::Process.kill signal, pid
-    rescue Errno::ESRCH
-      nil
+      out = machine.shell.run("kill -s #{signal} #{pid}")
+      raise Errno::ESRCH, pid.to_s if out.match 'No such process'
     end
 
     def stop
-      send_signal :TERM
+      send_signal :TERM if alive?
     end
 
     def kill
-      send_signal :KILL
+      send_signal :KILL if alive?
       while alive?; end
     end
 

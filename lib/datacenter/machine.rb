@@ -4,7 +4,7 @@ module Datacenter
     attr_reader :shell
 
     def initialize(shell=nil)
-      @shell = shell || Shell::Localhost.new
+      @shell = shell || Shell::Local.new
     end
 
     def ips

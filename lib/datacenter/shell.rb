@@ -1,13 +1,14 @@
 module Datacenter
   module Shell
 
-    class Localhost
+    class Local
       def run(command)
-        `#{command}`.strip
+        i,o,e,t = Open3.popen3 command
+        (o.readlines.join + e.readlines.join).strip
       end
     end
 
-    class Ssh
+    class Remote
       attr_reader :options
 
       def initialize(*args)
@@ -18,7 +19,7 @@ module Datacenter
         if @session
           @session.exec!(command).strip
         else
-          Net::SSH.start(*options) { |ssh| ssh.exec! command }.strip
+          Net::SSH.start(*options) { |ssh| ssh.exec! command }.to_s.strip
         end
       end
 
