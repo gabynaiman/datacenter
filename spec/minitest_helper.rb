@@ -11,6 +11,10 @@ Turn.config do |c|
   c.ansi = true
 end
 
+class Module
+  include Minitest::Spec::DSL
+end
+
 module Datacenter
   module Shell
     class Mock
