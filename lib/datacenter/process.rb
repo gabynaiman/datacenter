@@ -42,7 +42,7 @@ module Datacenter
     end
 
     def stop
-      send_signal :TERM if alive?
+      send_signal :QUIT if alive?
     end
 
     def kill

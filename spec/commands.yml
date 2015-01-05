@@ -2,7 +2,7 @@
 
 "kill -s 0 -22803": "bash: kill: (-22803) - No such process"
 
-"kill -s TERM 22803": ""
+"kill -s QUIT 22803": ""
 
 "uname -i": x86_64
 
