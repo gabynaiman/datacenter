@@ -1,6 +1,6 @@
-"kill -s 0 22803": ""
+"ls /proc | grep 22803": "22803"
 
-"kill -s 0 -22803": "bash: kill: (-22803) - No such process"
+"ls /proc | grep -22803": ""
 
 "kill -s QUIT 22803": ""
 

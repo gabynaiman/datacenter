@@ -30,15 +30,7 @@ module Datacenter
     end
 
     def alive?
-      send_signal 0
-      true
-    rescue Errno::ESRCH
-      false
-    end
-
-    def send_signal(signal)
-      out = shell.run("kill -s #{signal} #{pid}")
-      raise Errno::ESRCH, pid.to_s if out.match 'No such process'
+      shell.run("ls /proc | grep #{pid}") == pid.to_s
     end
 
     def stop
@@ -54,6 +46,10 @@ module Datacenter
 
     attr_reader :shell
 
+    def send_signal(signal)
+      shell.run "kill -s #{signal} #{pid}"
+    end
+    
     def info
       @cache.fetch(:info) do
         ps = shell.run('ps aux').scan(/.*#{pid}.*/)[0].split
