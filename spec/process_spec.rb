@@ -11,9 +11,9 @@ describe Datacenter::Process do
 
   it ('Dead') { Datacenter::Process.new(-pid, mock_shell).wont_be :alive? }
 
-  it ('Stop') { process.stop }
+  it ('Quit') { process.send_signal(:QUIT).must_equal 'quit success' }
 
-  it ('Kill') { Datacenter::Process.new(pid, Datacenter::Shell::Kill.new(pid)).kill }
+  it ('Kill') { process.send_signal(:KILL).must_equal 'kill success' }
 
   it ('Name') { process.name.must_equal 'gnome-system-mo' }
   

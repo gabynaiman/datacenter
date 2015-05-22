@@ -38,22 +38,6 @@ module Datacenter
 
     end
 
-    class Kill
-      def initialize(pid)
-        @pid = pid
-      end
-
-      def run(command)
-        if command == "kill -s 0 #{@pid}"
-          ''
-        elsif command == "kill -s KILL #{@pid}"
-          @pid = nil
-          ''
-        else
-          'kill: No such process'
-        end
-      end
-    end
   end
 end
 

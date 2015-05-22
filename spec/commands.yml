@@ -1,8 +1,10 @@
-"ls /proc | grep 22803": "22803"
+"ps -p 22803 | grep 22803": "22803"
 
-"ls /proc | grep -22803": ""
+"ps -p -22803 | grep -22803": ""
 
-"kill -s QUIT 22803": ""
+"kill -s QUIT 22803": 'quit success'
+
+"kill -s KILL 22803": 'kill success'
 
 "uname -i": x86_64
 

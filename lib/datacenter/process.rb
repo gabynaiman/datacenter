@@ -30,26 +30,19 @@ module Datacenter
     end
 
     def alive?
-      shell.run("ls /proc | grep #{pid}") == pid.to_s
+      alive = !shell.run("ps -p #{pid} | grep #{pid}").empty?
+      Datacenter.logger.debug(self.class) { "pid: #{pid} - ALIVE: #{alive}" } if !alive
+      alive
     end
 
-    def stop
-      send_signal :QUIT if alive?
-    end
-
-    def kill
-      send_signal :KILL if alive?
-      while alive?; end
+    def send_signal(signal)
+      shell.run "kill -s #{signal} #{pid}"
     end
 
     private
 
     attr_reader :shell
 
-    def send_signal(signal)
-      shell.run "kill -s #{signal} #{pid}"
-    end
-    
     def info
       @cache.fetch(:info) do
         ps = shell.run('ps aux').scan(/.*#{pid}.*/)[0].split
