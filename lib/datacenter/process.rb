@@ -13,14 +13,12 @@ module Datacenter
       :mem_usage
     ]
 
-    EXPIRATION_TIME = 2
-
     attr_reader :pid
 
     def initialize(pid, shell=nil)
       @pid = pid
       @shell = shell || Shell::Local.new
-      @cache = Cache.new EXPIRATION_TIME
+      @cache = Cache.new Datacenter.process_cache_expiration
     end
 
     ATTRIBUTES.each do |attribute|
@@ -45,9 +43,9 @@ module Datacenter
 
     def info
       @cache.fetch(:info) do
-        ps = shell.run('ps aux').scan(/.*#{pid}.*/)[0].split
+        status = Hash[proc_file(:status).split("\n").map{ |s| s.split(':').map(&:strip) }]
+        ps = shell.run("ps -p #{pid} -o user,pid,pcpu,%mem,vsize,rss,stat,command").split("\n")[1].split
         Hash.new.tap do |info|
-          status = Hash[proc_file(:status).split("\n").map{ |s| s.split(':').map(&:strip) }]
           info[:name] = status['Name']
           info[:user] = ps[0]
           info[:pid]  = ps[1]
@@ -55,8 +53,8 @@ module Datacenter
           info[:mem_usage] = ps[3].to_f
           info[:virtual_memory] = ps[4].to_i / 1024.0
           info[:memory] = ps[5].to_i / 1024.0
-          info[:status] = ps[7] 
-          info[:command] = ps[10..-1].reduce { |acum,e| "#{acum} #{e}" }
+          info[:status] = ps[6]
+          info[:command] = ps[7..-1].reduce { |acum,e| "#{acum} #{e}" }
         end
       end
     end

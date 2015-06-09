@@ -3,6 +3,7 @@ module Datacenter
 
     class Local
       def run(command)
+        Datacenter.logger.debug(self.class) { command }
         if RUBY_ENGINE == 'jruby'
           run_system command
         else
@@ -42,6 +43,7 @@ module Datacenter
       end
 
       def run(command)
+        Datacenter.logger.debug(self.class) { command }
         if @session
           @session.exec!(command).strip
         else
@@ -50,7 +52,7 @@ module Datacenter
       end
 
       def open
-        @session = Net::SSH.start *options unless @session
+        @session ||= Net::SSH.start *options
       end
 
       def close

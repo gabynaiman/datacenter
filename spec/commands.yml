@@ -2,25 +2,23 @@
 
 "ps -p -22803 | grep -22803": ""
 
-"kill -s QUIT 22803": 'quit success'
+"kill -s QUIT 22803": "quit success"
 
-"kill -s KILL 22803": 'kill success'
+"kill -s KILL 22803": "kill success"
 
-"uname -i": x86_64
+"uname -i": "x86_64"
 
-"uname -r": 3.5.0-49-generic
+"uname -r": "3.5.0-49-generic"
 
-"uname -o": GNU/Linux
+"uname -o": "GNU/Linux"
 
 "lsb_release -i": "Distributor ID: Ubuntu"
 
 "lsb_release -r": "Release:  12.04"
 
-hostname: |
-  matias
+"hostname": "matias"
 
-nproc: |
-  2
+"nproc": "2"
 
 "df -lT": |
   Filesystem     Type     1K-blocks    Used Available Use% Mounted on
@@ -31,7 +29,7 @@ nproc: |
   none           tmpfs         5120       0      5120   0% /run/lock
   none           tmpfs      2019816     512   2019304   1% /run/shm
 
-ifconfig: |
+"ifconfig": |
   eth4      Link encap:Ethernet  HWaddr e0:cb:4e:c2:99:9d  
             inet addr:192.168.50.127  Bcast:192.168.50.255  Mask:255.255.255.0
             inet6 addr: fe80::e2cb:4eff:fec2:999d/64 Scope:Link
@@ -41,7 +39,7 @@ ifconfig: |
             collisions:0 txqueuelen:1000 
             RX bytes:110494415 (110.4 MB)  TX bytes:21453491 (21.4 MB)
 
-  lo        Link encap:Local Loopback  
+  lo        Link encap:Local Loopback
             inet addr:127.0.0.1  Mask:255.0.0.0
             inet6 addr: ::1/128 Scope:Host
             UP LOOPBACK RUNNING  MTU:16436  Metric:1
@@ -82,6 +80,15 @@ ifconfig: |
   siblings  : 2
   core id   : 0
 
+"ps aux": |
+  USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+  root         1  0.0  0.0  24548  2460 ?        Ss   May15   0:00 /sbin/init
+  root         2  0.0  0.0      0     0 ?        S    May15   0:00 [kthreadd]
+  root         3  0.0  0.0      0     0 ?        S    May15   0:06 [ksoftirqd/0]
+  root         6  0.0  0.0      0     0 ?        S    May15   0:00 [migration/0]
+  root         7  0.0  0.0      0     0 ?        S    May15   0:00 [watchdog/0]
+  root         8  0.0  0.0      0     0 ?        S    May15   0:00 [migration/1]
+  matias   22803 11.9  0.8 513268 33792 ?        Sl   09:43  52:47 gnome-system-monitor
 
 "ps aux --sort -rss | head -n 11": |
   USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
@@ -117,18 +124,12 @@ ifconfig: |
   matias   23542  0.0  0.2  34216 11408 pts/0    Ss   10:24   0:01 -bash
   matias   22903  0.0  0.2  34164 11360 pts/1    Ss   09:46   0:00 -bash
 
-"ps aux": |
-  USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-  root         1  0.0  0.0  24548  2460 ?        Ss   May15   0:00 /sbin/init
-  root         2  0.0  0.0      0     0 ?        S    May15   0:00 [kthreadd]
-  root         3  0.0  0.0      0     0 ?        S    May15   0:06 [ksoftirqd/0]
-  root         6  0.0  0.0      0     0 ?        S    May15   0:00 [migration/0]
-  root         7  0.0  0.0      0     0 ?        S    May15   0:00 [watchdog/0]
-  root         8  0.0  0.0      0     0 ?        S    May15   0:00 [migration/1] 
-  matias   22803 11.9  0.8 513268 33792 ?        Sl   09:43  52:47 gnome-system-monitor
-
-ps aux | grep "gnome-system-monitor" | grep -v grep: |
+"ps aux | grep \"gnome-system-monitor\" | grep -v grep": |
   matias   22803  7.2  0.8 597980 34948 ?        Sl   May21 136:34 gnome-system-monitor
+
+"ps -p 22803 -o user,pid,pcpu,%mem,vsize,rss,stat,command": |
+  USER       PID %CPU %MEM    VSZ   RSS STAT COMMAND
+  matias   22803 11.9  0.8 513268 33792 Sl   gnome-system-monitor
 
 "cat /proc/22803/status": |
   Name: gnome-system-mo

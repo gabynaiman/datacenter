@@ -7,30 +7,28 @@ module Datacenter
     end
 
     def fetch(key, &block)
-      set key, &block if !key?(key) || expired?(key)
+      set key, block.call if !data.key?(key) || expired?(key)
       get key
     end
 
     private
 
+    attr_reader :data, :expiration_time
+
     def get(key)
-      @data[key][:value]
+      data[key][:value]
     end
 
-    def set(key, &block)
-      @data[key] = {
-        value: block.call,
+    def set(key, value)
+      data[key] = {
+        value: value,
         fetched_at: Time.now
       }
     end
 
-    def key?(key)
-      @data.key? key
-    end
-
     def expired?(key)
-      return false unless @expiration_time
-      Time.now >= @data[key][:fetched_at] + @expiration_time
+      return false unless expiration_time
+      Time.now >= data[key][:fetched_at] + expiration_time
     end
 
   end
