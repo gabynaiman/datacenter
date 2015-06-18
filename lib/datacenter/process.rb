@@ -29,7 +29,7 @@ module Datacenter
 
     def alive?
       alive = !shell.run("ps -p #{pid} | grep #{pid}").empty?
-      Datacenter.logger.debug(self.class) { "pid: #{pid} - ALIVE: #{alive}" } if !alive
+      Datacenter.logger.info(self.class) { "pid: #{pid} - ALIVE: #{alive}" } if !alive
       alive
     end
 
