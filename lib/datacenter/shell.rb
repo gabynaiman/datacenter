@@ -2,6 +2,11 @@ module Datacenter
   module Shell
 
     class Local
+
+      def initialize
+        @mutex = Mutex.new
+      end
+
       def run(command)
         Datacenter.logger.debug(self.class) { command }
         if RUBY_ENGINE == 'jruby'
@@ -19,19 +24,23 @@ module Datacenter
       end
 
       def run_system(command)
-        $stdout = StringIO.new
-        $stderr = StringIO.new
+        @mutex.synchronize do
+          begin
+            $stdout = StringIO.new
+            $stderr = StringIO.new
 
-        system command
+            system command
 
-        [$stdout, $stderr].map do |io| 
-          io.rewind
-          io.readlines.join.force_encoding('UTF-8')
-        end.join.strip
+            [$stdout, $stderr].map do |io| 
+              io.rewind
+              io.readlines.join.force_encoding('UTF-8')
+            end.join.strip
 
-      ensure
-        $stdout = STDOUT
-        $stderr = STDERR
+          ensure
+            $stdout = STDOUT
+            $stderr = STDERR
+          end
+        end
       end
     end
 
