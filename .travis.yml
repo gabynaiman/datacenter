@@ -6,6 +6,7 @@ rvm:
   - 2.2
   - jruby
 before_install:
+  - gem install bundler
   - sudo apt-get -y install openssh-server
   - ssh-keygen -q -t rsa -N "" -f ~/.ssh/id_rsa
   - cp $HOME/.ssh/id_rsa.pub $HOME/.ssh/authorized_keys
