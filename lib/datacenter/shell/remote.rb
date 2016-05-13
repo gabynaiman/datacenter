@@ -43,8 +43,8 @@ module Datacenter
         result = ''
         error = ''
         
-        out = options.fetch :out, StringIO.new
-        err = options.fetch :err, StringIO.new
+        out = options[:out] || StringIO.new
+        err = options[:err] || StringIO.new
 
         exit_code = nil
 

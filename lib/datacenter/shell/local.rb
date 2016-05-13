@@ -22,16 +22,16 @@ module Datacenter
       def run(command, options={})
         Datacenter.logger.debug(self.class) { command }
 
-        defaults = {
-          chdir: Dir.pwd,
-          out: StringIO.new,
-          err: StringIO.new
+        opts = {
+          chdir: options[:chdir] || Dir.pwd,
+          out: options[:out] || StringIO.new,
+          err: options[:err] || StringIO.new
         }
 
         if RUBY_ENGINE == 'jruby'
-          run_system command, defaults.merge(options)
+          run_system command, opts
         else
-          run_open3 command, defaults.merge(options)
+          run_open3 command, opts
         end
       end
 
