@@ -3,21 +3,33 @@ require 'minitest_helper'
 describe Datacenter::Shell do
   
   module SharedExpamples
+
+    let(:shell) { shell_class.new *shell_args }
+    
     it 'Success' do
       filename = File.join '/tmp', Time.now.to_i.to_s
       shell.run "echo \"test file\" > #{filename}"
-      shell.run("cat #{filename}").must_equal 'test file'
+      shell.run("cat #{filename}").must_equal "test file\n"
     end
 
     it 'Error' do
       filename = '/invalid_dir/invalid_file'
-      shell.run("cat #{filename}").must_equal "cat: #{filename}: No such file or directory"
+      error = Proc.new { shell.run("cat #{filename}") }.must_raise Datacenter::Shell::CommandError
+      error.message.must_include "cat: #{filename}: No such file or directory"
     end
+
+    it 'Block' do
+      shell_class.open(*shell_args) do |shell|
+        shell.run('ls /').must_equal `ls /`
+      end
+    end
+
   end
 
   describe 'Local' do
 
-    let(:shell) { Datacenter::Shell::Local.new }
+    let(:shell_args) { [] }
+    let(:shell_class) { Datacenter::Shell::Local }
 
     include SharedExpamples
 
@@ -25,16 +37,10 @@ describe Datacenter::Shell do
 
   describe 'Remote' do
 
-    let(:connection_args) { ['localhost', `whoami`.strip] }
-    let(:shell) { Datacenter::Shell::Remote.new *connection_args }
+    let(:shell_args) { ['localhost', `whoami`.strip] }
+    let(:shell_class) { Datacenter::Shell::Remote }
 
     include SharedExpamples
-
-    it 'Block' do
-      Datacenter::Shell::Remote.open(*connection_args) do |shell|
-        shell.run('ls /').must_equal `ls /`.strip
-      end
-    end
 
   end
 
