@@ -14,7 +14,7 @@ describe Datacenter::Shell do
 
     it 'Error' do
       filename = '/invalid_dir/invalid_file'
-      error = Proc.new { shell.run("cat #{filename}") }.must_raise Datacenter::Shell::CommandError
+      error = Proc.new { shell.run "cat #{filename}" }.must_raise Datacenter::Shell::CommandError
       error.message.must_include "cat: #{filename}: No such file or directory"
     end
 
@@ -22,6 +22,21 @@ describe Datacenter::Shell do
       shell_class.open(*shell_args) do |shell|
         shell.run('ls /').must_equal `ls /`
       end
+    end
+
+    it 'Redirect stdout' do
+      out = StringIO.new
+      shell.run 'ls /', out: out
+      out.rewind
+      out.read.must_equal `ls /`
+    end
+
+    it 'Redirect stderr' do
+      err = StringIO.new
+      filename = '/invalid_dir/invalid_file'
+      Proc.new { shell.run "cat #{filename}", err: err }.must_raise Datacenter::Shell::CommandError
+      err.rewind
+      err.read.must_include "cat: #{filename}: No such file or directory"
     end
 
   end
