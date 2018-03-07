@@ -1,10 +1,10 @@
 # Datacenter
 
-[![Gem Version](https://badge.fury.io/rb/datacenter.png)](https://rubygems.org/gems/datacenter)
-[![Build Status](https://travis-ci.org/gabynaiman/datacenter.png?branch=master)](https://travis-ci.org/gabynaiman/datacenter)
-[![Coverage Status](https://coveralls.io/repos/gabynaiman/datacenter/badge.png?branch=master)](https://coveralls.io/r/gabynaiman/datacenter?branch=master)
-[![Code Climate](https://codeclimate.com/github/gabynaiman/datacenter.png)](https://codeclimate.com/github/gabynaiman/datacenter)
-[![Dependency Status](https://gemnasium.com/gabynaiman/datacenter.png)](https://gemnasium.com/gabynaiman/datacenter)
+[![Gem Version](https://badge.fury.io/rb/datacenter.svg)](https://rubygems.org/gems/datacenter)
+[![Build Status](https://travis-ci.org/gabynaiman/datacenter.svg?branch=master)](https://travis-ci.org/gabynaiman/datacenter)
+[![Coverage Status](https://coveralls.io/repos/gabynaiman/datacenter/badge.svg?branch=master)](https://coveralls.io/r/gabynaiman/datacenter?branch=master)
+[![Code Climate](https://codeclimate.com/github/gabynaiman/datacenter.svg)](https://codeclimate.com/github/gabynaiman/datacenter)
+[![Dependency Status](https://gemnasium.com/gabynaiman/datacenter.svg)](https://gemnasium.com/gabynaiman/datacenter)
 
 Manage and monitor servers and processes
 
