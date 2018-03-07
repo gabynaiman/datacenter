@@ -28,7 +28,7 @@ module Datacenter
           err: options[:err] || StringIO.new
         }
 
-        if RUBY_ENGINE == 'jruby'
+        if RUBY_ENGINE == 'jruby' && JRUBY_VERSION < '9.0.0.0'
           run_system command, opts
         else
           run_open3 command, opts
