@@ -1,15 +1,9 @@
 require 'coverage_helper'
 require 'minitest/autorun'
-require 'turn'
+require 'minitest/colorin'
 require 'yaml'
 require 'datacenter'
 require 'pry-nav'
-
-Turn.config do |c|
-  c.format = :pretty
-  c.natural = true
-  c.ansi = true
-end
 
 class Module
   include Minitest::Spec::DSL
