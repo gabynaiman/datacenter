@@ -155,3 +155,9 @@
   VmPTE:       556 kB
   VmSwap:        0 kB
   Threads:  4
+
+"\n        if [ -d \"/proc/-22803\" ]; then \n          echo -n \"true\"\n        else\n          echo -n \"false\"\n        fi\n      ": |
+  false
+
+"\n        if [ -d \"/proc/22803\" ]; then \n          echo -n \"true\"\n        else\n          echo -n \"false\"\n        fi\n      ": |
+  true

@@ -29,7 +29,16 @@ module Datacenter
     end
 
     def alive?
-      alive = !shell.run("ps -p #{pid} | grep #{pid}").empty?
+      command = %Q{
+        if [[ -d "#{proc_dir}" ]];then 
+          echo -n "true"
+        else
+          echo -n "false"
+        fi
+      }
+
+      alive = shell.run(command) == 'true'
+
       Datacenter.logger.info(self.class) { "pid: #{pid} - ALIVE: #{alive}" } if !alive
       alive
     end
@@ -62,8 +71,12 @@ module Datacenter
       end
     end
 
+    def proc_dir
+      File.join '/proc', pid.to_s
+    end
+
     def proc_file(name)
-      filename = File.join '/proc', pid.to_s, name.to_s
+      filename = File.join proc_dir, name.to_s
       shell.run "cat #{filename}"
     end
 
