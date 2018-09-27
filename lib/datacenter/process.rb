@@ -30,7 +30,7 @@ module Datacenter
 
     def alive?
       command = %Q{
-        if [ -d "#{proc_dir}" ];then 
+        if [ -d "#{proc_dir}" ]; then 
           echo -n "true"
         else
           echo -n "false"
