@@ -18,7 +18,7 @@ task default: :spec
 
 desc 'Pry console'
 task :console do
-  require 'rasti-db'
+  require 'datacenter'
   require 'pry'
   ARGV.clear
   Pry.start
