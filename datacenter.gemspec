@@ -18,11 +18,10 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'net-ssh', '~> 2.6'
+  spec.add_dependency 'net-ssh', '~> 5.2'
   spec.add_dependency 'class_config'
   
-  spec.add_development_dependency 'bundler', '~> 1.12'
-  spec.add_development_dependency 'rake', '~> 11.0'
+  spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'minitest', '~> 5.0', '< 5.11'
   spec.add_development_dependency 'minitest-colorin', '~> 0.1'
   spec.add_development_dependency 'minitest-line', '~> 0.6'
