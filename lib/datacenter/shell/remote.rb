@@ -7,7 +7,7 @@ module Datacenter
       end
 
       def open
-        @session ||= Net::SSH.start *args
+        @session ||= Net::SSH.start(*args)
       end
 
       def close
@@ -26,7 +26,7 @@ module Datacenter
       end
 
       def self.open(*args)
-        shell = new *args
+        shell = new(*args)
         shell.open
         yield shell
       ensure

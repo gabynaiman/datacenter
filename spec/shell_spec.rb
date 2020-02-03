@@ -4,7 +4,7 @@ describe Datacenter::Shell do
   
   module SharedExpamples
 
-    let(:shell) { shell_class.new *shell_args }
+    let(:shell) { shell_class.new(*shell_args) }
     
     it 'Success' do
       filename = File.join '/tmp', Time.now.to_i.to_s
