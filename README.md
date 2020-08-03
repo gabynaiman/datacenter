@@ -4,7 +4,6 @@
 [![Build Status](https://travis-ci.org/gabynaiman/datacenter.svg?branch=master)](https://travis-ci.org/gabynaiman/datacenter)
 [![Coverage Status](https://coveralls.io/repos/gabynaiman/datacenter/badge.svg?branch=master)](https://coveralls.io/r/gabynaiman/datacenter?branch=master)
 [![Code Climate](https://codeclimate.com/github/gabynaiman/datacenter.svg)](https://codeclimate.com/github/gabynaiman/datacenter)
-[![Dependency Status](https://gemnasium.com/gabynaiman/datacenter.svg)](https://gemnasium.com/gabynaiman/datacenter)
 
 Manage and monitor servers and processes
 
