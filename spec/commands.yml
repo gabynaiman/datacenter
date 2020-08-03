@@ -40,7 +40,7 @@
             RX bytes:110494415 (110.4 MB)  TX bytes:21453491 (21.4 MB)
 
   lo        Link encap:Local Loopback
-            inet addr:127.0.0.1  Mask:255.0.0.0
+            inet 127.0.0.1  Mask:255.0.0.0
             inet6 addr: ::1/128 Scope:Host
             UP LOOPBACK RUNNING  MTU:16436  Metric:1
             RX packets:24200 errors:0 dropped:0 overruns:0 frame:0

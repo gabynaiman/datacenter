@@ -9,8 +9,9 @@ module Datacenter
 
     def ips
       shell.run('ifconfig')
-           .scan(/inet addr:(([0-9]*\.){3}[0-9]*)/)
-           .map { |s| s[0] }
+           .split("\n")
+           .select { |l| l.strip.start_with? 'inet ' }
+           .map { |l| l.match(/(([0-9]+\.){3}[0-9]+)/).to_s }
     end
 
     def name
